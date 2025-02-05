@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, Brain } from 'lucide-react';
-
+import Logo from '../assets/logo.png'
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,8 +17,8 @@ const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-indigo-600" />
-            <span className="text-2xl font-bold text-gray-900">Millennium AI</span>
+           <img src={Logo} style={{height:"5rem", width:"15rem"}}/>
+           
           </div>
 
           {/* Desktop Navigation */}

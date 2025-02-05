@@ -20,21 +20,22 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-indigo-600 mt-1 mr-4" />
                 <div>
                   <h4 className="font-bold text-gray-900">Email</h4>
-                  <p className="text-gray-600">info@Millennium AI.com</p>
+                  <p className="text-gray-600">info@millenniumai.in </p>
                 </div>
               </div>
               <div className="flex items-start">
                 <Phone className="h-6 w-6 text-indigo-600 mt-1 mr-4" />
                 <div>
                   <h4 className="font-bold text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">+91-9319410265</p>
+                  <p className="text-gray-600">+91-7053171752</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <MapPin className="h-6 w-6 text-indigo-600 mt-1 mr-4" />
                 <div>
                   <h4 className="font-bold text-gray-900">Location</h4>
-                  <p className="text-gray-600">123 AI Street, Tech City, TC 12345</p>
+                  <p className="text-gray-600">UGF-02 Krishna Enclave Govindpuram Ghaziabad - 201002</p>
                 </div>
               </div>
             </div>

@@ -11,21 +11,26 @@ const Hero = () => {
       description: "Transforming businesses through innovative artificial intelligence solutions"
     },
     {
-      image: "https://images.unsplash.com/photo-1676299081847-82ec15127128",
+      image: "https://www.rws.com/media/images/data-annotation-and-labelling-mobile_tcm228-236599.png?v=20250120070103",
       title: "Future of Technology",
       description: "Empowering your digital transformation journey with cutting-edge AI"
     },
     {
-      image: "https://images.unsplash.com/photo-1677442136728-6cd35ec7aa94",
-      title: "Smart Automation",
-      description: "Streamline your operations with intelligent automation solutions"
+      image: "https://images.prismic.io/turing/652ec3d7fbd9a45bcec8198a_Named_Entity_Recognition_NER_11zon_3a4a69836b.webp?auto=format,compress",
+      title: "",
+      description: ""
+    },
+    {
+      image: "https://mindy-support.com/wp-content/uploads/2023/04/what-is-geospatial-annotation_.png",
+      title: "Geospatial Annotation",
+      description: ""
     }
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
