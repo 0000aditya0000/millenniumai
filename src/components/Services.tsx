@@ -56,6 +56,12 @@ const Services = () => {
       title: 'Audio Annotation',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqRparNtPHvt0Ad5lWKomfgSgioJwGh-wa3g&s',
       description: 'Our professional audio annotation service specializes in creating high-quality labeled datasets for speech recognition and audio analysis systems. We provide comprehensive solutions for speaker identification, emotion detection, and sound event classification. Our team handles multiple languages and accents, ensuring broad coverage for your audio AI applications. We employ advanced audio processing tools and maintain strict quality standards through our multi-stage review process.'
+    },
+    {
+      icon: Mic,
+      title: 'NLP (Natural Language Processing)',
+      image: 'https://www.shaip.com/wp-content/uploads/2022/10/Blog-What-is-NLP.jpg',
+      description: '(NLP) is used to help computers understand and interact with human language. NLP has many applications, including: Machine translation: Translating text from one language to anotherSentiment analysis: Determining whether text conveys a positive, negative, or neutral sentiment Text summarization: Condensing multiple documents into a single summary Speech recognition: Converting spoken words into text'
     }
   ];
 
