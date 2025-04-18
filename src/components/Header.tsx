@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, Brain } from 'lucide-react';
-import Logo from '../assets/logo.png'
+import Logo from '../assets/image.png'
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,11 +13,11 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-      <nav className="container mx-auto px-4 py-4">
+    <header className="fixed w-full bg-[#0E0C15] backdrop-blur-sm z-50 shadow-sm border-b border-zinc-500">
+      <nav className="container mx-auto px-10 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-           <img src={Logo} style={{height:"5rem", width:"15rem"}}/>
+           <img src={Logo} style={{height:"4rem", width:"12rem"}}/>
            
           </div>
 
@@ -27,12 +27,15 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-indigo-600 transition-colors"
+                className="text-gray-400 font-code hover:text-white transition-colors"
               >
                 {item.name}
               </a>
             ))}
-            <button className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors">
+           
+          </div>
+          <div className="hidden md:flex">
+          <button className="bg-[#411D79] text-white px-6 py-2 rounded-full hover:bg-[#5d32a1ee] transition-all ">
               Get Started
             </button>
           </div>
