@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Menu, X, Brain } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Menu, X, Brain, User } from 'lucide-react';
 import Logo from '../assets/image.png'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react'
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef(null)
 
   const navItems = [
     { name: 'Home', href: '#' },
@@ -12,9 +15,13 @@ const Header = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  useGSAP(() => {
+    gsap.from (navRef.current, {y: -100, duration: 2, ease: 'power4.out', opacity: 0})
+  })
+
   return (
-    <header className="fixed w-full bg-[#0E0C15] backdrop-blur-sm z-50 shadow-sm border-b border-zinc-500">
-      <nav className="container mx-auto px-10 py-3">
+    <header className="fixed w-full  backdrop-blur-xl z-50 shadow-sm">
+      <nav ref={navRef} className="container mx-auto px-20 py-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
            <img src={Logo} style={{height:"4rem", width:"12rem"}}/>
@@ -22,12 +29,12 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center justify-evenly w-full">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-400 font-code hover:text-white transition-colors"
+                className="text-gray-400 font-code text-md hover:text-white transition-colors"
               >
                 {item.name}
               </a>
@@ -35,8 +42,8 @@ const Header = () => {
            
           </div>
           <div className="hidden md:flex">
-          <button className="bg-[#411D79] text-white px-6 py-2 rounded-full hover:bg-[#5d32a1ee] transition-all ">
-              Get Started
+          <button className="bg-[#0e0c15] text-white shadow-sm drop-shadow-[0_0_10px_#444]  px-3 py-3 rounded-full hover:bg-[#5d32a1ee] transition-all ">
+          <User />
             </button>
           </div>
 
