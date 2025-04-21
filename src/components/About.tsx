@@ -2,12 +2,15 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Target, Users, Lightbulb } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
+
 
 export default function About() {
   const aboutH1Ref = useRef(null);
   const aboutPRef = useRef(null);
   const aboutCardsRefs = useRef([])
+  const containerRef = useRef(null);
 
   useGSAP(() => {
 
@@ -17,7 +20,8 @@ export default function About() {
         trigger: aboutH1Ref.current,
         start: "top 70%",
         end: "top 50%",
-        // scrub: true,
+        scrub: 1,
+        
       },
       opacity: 0,
     });
@@ -28,7 +32,7 @@ export default function About() {
         trigger: aboutPRef.current,
         start: "top 70%",
         end: "top 50%",
-        // scrub: true,
+        scrub: 1,
       },
       opacity: 0,
     })
@@ -40,12 +44,22 @@ export default function About() {
         trigger: aboutCardsRefs.current,
         start: "top 70%",
         end: "top 50%",
-        // scrub: true,
+        scrub: 1,
+
       },
       opacity: 0,
     })
 
-    
+    gsap.to(containerRef.current, {
+      y:-200,
+      opacity:0,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "bottom 50%",
+        end: "bottom 30%",
+        scrub: 1,
+      } 
+    })
 
   }, []);
 
@@ -54,25 +68,28 @@ export default function About() {
       title: "Our Mission",
       description:
         " To empower businesses with AI-driven solutions that drive growth, efficiency, and innovation in the digital age.",
+      icon : Target
     },
     {
       title: "Our Team",
       description:
         " A diverse group of AI experts, developers, and business strategists working together to deliver exceptional results.",
+        icon: Users
     },
     {
       title: "Our Vision",
       description:
         " To lead the AI revolution by creating innovative solutions that shape the future of technology and business.",
+        icon: Lightbulb
     },
   ];
 
   return (
-    <section className="bg-[#0e0c15] relative py-20">
+    <section style={{fontFamily:"verdana"}} ref={containerRef} className="bg-[#0e0c15] relative py-20">
       <div className="px-20">
-        <h2 ref={aboutH1Ref} className="text-4xl font-bold text-gray-100 text-center mt-20">
+        <h1 ref={aboutH1Ref} className="text-5xl font-bold text-gray-100 text-center mt-20">
           Who are We
-        </h2>
+        </h1>
         <p ref={aboutPRef} className="text-xl mt-10 text-center text-gray-600 max-w-3xl mx-auto">
           We are pioneers in AI technology, dedicated to transforming businesses through innovative solutions and cutting-edge artificial intelligence.
         </p>
@@ -89,9 +106,12 @@ export default function About() {
               className={`bg-[#0e0c15] flex flex-col justify-between py-10 min-h-[500px] px-20 border-r ${index === aboutContent.length - 1 ? "border-none" : ""
                 } border-[#444]`}
             >
-              <h3 className="text-5xl font-semibold text-gray-100 mb-4">
+             <div className=" flex justify-between">
+             <h3 className="text-5xl font-semibold text-gray-100 mb-4">
                 {content.title}
               </h3>
+              <content.icon className="h-12 w-12 text-indigo-600" />
+             </div>
               <p className="text-gray-400 text-md">{content.description}</p>
             </div>
           ))}

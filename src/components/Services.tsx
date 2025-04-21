@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Image as ImageIcon,
   Video,
@@ -11,7 +11,18 @@ import {
   Sparkles,
 } from "lucide-react";
 import ServiceCard from "./ServiceCard";
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(ScrollTrigger);
+
 const Services = () => {
+
+  const serviceH1Ref = useRef(null);
+  const servicePRef = useRef(null);
+  const containerRef = useRef(null);
+  const cardRefs = useRef([])
+
   const services = [
     {
       icon: ImageIcon,
@@ -36,7 +47,7 @@ const Services = () => {
       backgroundUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_baQ82eUqEzrHJZ2JYmwlqj9lgS8fkSYIAA&s",
       description:
-"Geospatial annotation for AI—covering satellite imagery, LiDAR, and aerial data. We handle land use classification, object detection, building footprints, and road mapping with GIS standards and coordinate system support. Ideal for urban planning, agriculture, and location-based AI, with cross-validated, high-precision results."    },
+"AI-ready geospatial annotation—satellite, LiDAR & aerial data for land use, objects, roads & buildings. GIS-compliant. Precision for urban, agri & location AI."    },
     {
       icon: Stethoscope,
       title: "Medical Annotation",
@@ -87,7 +98,7 @@ const Services = () => {
 "Audio annotation for speech recognition and analysis—covering speaker ID, emotion detection, and sound event classification. Multi-language, high-quality datasets with rigorous review for audio AI applications."    },
     {
       icon: Mic,
-      title: "NLP (Natural Language Processing)",
+      title: "NLP",
       id: 9,
       backgroundUrl:
         "https://www.shaip.com/wp-content/uploads/2022/10/Blog-What-is-NLP.jpg",
@@ -95,22 +106,58 @@ const Services = () => {
 "NLP enables computers to understand and interact with human language. Applications include machine translation, sentiment analysis, text summarization, and speech recognition."    },
   ];
 
+  useGSAP(() => {
+    gsap.from(serviceH1Ref.current, {
+      y: 100,
+      scrollTrigger: {
+        trigger: serviceH1Ref.current,
+        start: "top 70%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      opacity: 0,
+    
+    })
+    gsap.from(servicePRef.current, {
+      y: 100,
+      scrollTrigger: {
+        trigger: servicePRef.current,
+        start: "top 70%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      opacity: 0, 
+    })
+
+    gsap.from(cardRefs.current, {
+      y: 100,
+      stagger:0.1,
+      scrollTrigger: {
+        trigger: cardRefs.current,
+        start: "top 70%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      opacity: 0,
+    })
+  })
+
   return (
-    <section id="services" className="py-20 px-10 overflow-hidden bg-[#0E0C15]">
+    <section ref={containerRef} style={{fontFamily:"verdana"}} id="services" className="py-20 px-10 overflow-hidden bg-[#0E0C15]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-100 mb-4">
+          <h1 ref={serviceH1Ref} className="text-5xl font-bold text-gray-100">
             Our Services
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          </h1>
+          <p ref={servicePRef} className="text-xl mt-10 text-gray-400 max-w-3xl mx-auto">
             We offer comprehensive AI-powered data annotation and content
             management solutions to help businesses build better AI models.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-evenly gap-8">
           {services.map((item, index) => (
-            <ServiceCard key={index} item={item} />
+            <ServiceCard ref={(el) => (cardRefs.current[index] = el)} key={index} item={item} />
           ))}
         </div>
       </div>
