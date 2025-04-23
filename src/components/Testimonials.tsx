@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { Star } from 'lucide-react'
 import gsap from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-gsap.registerPlugin(ScrollTrigger); 
+gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
   const testimonials = [
@@ -30,7 +30,7 @@ const Testimonials = () => {
   const h1Ref = useRef(null)
   const pRef = useRef(null)
   const cardRefs = useRef([])
-  
+
 
   useGSAP(() => {
     gsap.from(h1Ref.current, {
@@ -42,7 +42,7 @@ const Testimonials = () => {
         scrub: 1,
       },
       opacity: 0,
-    
+
     })
     gsap.from(pRef.current, {
       y: 100,
@@ -52,12 +52,12 @@ const Testimonials = () => {
         end: "top 50%",
         scrub: 1,
       },
-      opacity: 0, 
+      opacity: 0,
     })
 
     gsap.from(cardRefs.current, {
       y: 100,
-      stagger:0.1,
+      stagger: 0.1,
       scrollTrigger: {
         trigger: cardRefs.current,
         start: "top 70%",
@@ -67,10 +67,10 @@ const Testimonials = () => {
       opacity: 0,
     })
   })
-  
+
 
   return (
-    <section style={{fontFamily:"verdana"}} id="testimonials" className="py-20 px-28 bg-[#0e0c15]">
+    <section style={{ fontFamily: "verdana" }} id="testimonials" className="py-20 px-28 ">
       <div className="container  mx-auto px-4">
         <div className="text-center mb-16">
           <h1 ref={h1Ref} className="text-5xl font-bold text-gray-100 ">What Our Clients Say</h1>
@@ -81,7 +81,12 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div ref={(el) => cardRefs.current[index] = el} key={index} className="bg-[#0e0c15] p-8 rounded-xl hover:shadow-md shadow-gray-900 shadow-lg transition-shadow">
+            <div
+              ref={(el) => (cardRefs.current[index] = el)}
+              key={index}
+              className=" p-8 rounded-xl backdrop-blur-md border border-white/10 hover:shadow-[#333] shadow-[#111] shadow-lg transition-shadow"
+            >
+
               <div className="flex items-center mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />

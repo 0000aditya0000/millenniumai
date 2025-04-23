@@ -6,10 +6,14 @@ import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import BgVideo from './components/BgVideo'
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0E0C15]">
+    <div className="min-h-screen ">
+      {/* <video autoPlay muted loop className='fixed z-0' src={BgVideo}></video> */}
+     <BgVideo />
+
       <Header />
       <main>
         <Hero />

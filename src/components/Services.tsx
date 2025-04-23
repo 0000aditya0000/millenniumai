@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   Image as ImageIcon,
   Video,
@@ -12,98 +12,108 @@ import {
 } from "lucide-react";
 import ServiceCard from "./ServiceCard";
 import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
-
   const serviceH1Ref = useRef(null);
   const servicePRef = useRef(null);
   const containerRef = useRef(null);
-  const cardRefs = useRef([])
+  const cardRefs = useRef([]);
+  const [showAll, setShowAll] = useState(false);
 
   const services = [
     {
       icon: ImageIcon,
       title: "Image Annotation",
       id: 0,
-      backgroundUrl: "https://keymakr.com/blog/content/images/2021/05/segment.jpg",
+      backgroundUrl:
+        "https://images.pexels.com/photos/8439084/pexels-photo-8439084.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       description:
-        "High-accuracy image annotation for AI—bounding boxes, segmentation, and polygons. Expert-labeled, format-flexible, and built to scale across industries like retail, autonomous driving, and healthcare."
+        "High-accuracy image annotation for AI—bounding boxes, segmentation, and polygons. Expert-labeled, format-flexible, and built to scale across industries like retail, autonomous driving, and healthcare.",
     },
     {
       icon: Video,
       title: "Video Annotation",
       id: 1,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSivQUDOa6m59Hu27EUQs-2W8S1_PXn3zZ9ew&s",
+        "https://images.pexels.com/photos/8721318/pexels-photo-8721318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       description:
-"Frame-accurate video annotation for object tracking, activity recognition, and scene understanding. We specialize in temporal labeling, 2D/3D formats, and consistent tracking across frames—ideal for surveillance, self-driving, and sports analytics."    },
+        "Frame-accurate video annotation for object tracking, activity recognition, and scene understanding. We specialize in temporal labeling, 2D/3D formats, and consistent tracking across frames—ideal for surveillance, self-driving, and sports analytics.",
+    },
     {
       icon: Map,
       title: "Geospatial Annotation",
       id: 2,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_baQ82eUqEzrHJZ2JYmwlqj9lgS8fkSYIAA&s",
+        "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       description:
-"AI-ready geospatial annotation—satellite, LiDAR & aerial data for land use, objects, roads & buildings. GIS-compliant. Precision for urban, agri & location AI."    },
+        "AI-ready geospatial annotation—satellite, LiDAR & aerial data for land use, objects, roads & buildings. GIS-compliant. Precision for urban, agri & location AI.",
+    },
     {
       icon: Stethoscope,
       title: "Medical Annotation",
       id: 3,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8xc68mhtXlcrICVXLk2UdUc-M7DI_PoiFLw&s",
+        "https://images.pexels.com/photos/8439065/pexels-photo-8439065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       description:
-"Expert medical image annotation for MRI, CT, X-rays, and pathology slides. We deliver accurate organ segmentation, tumor marking, and condition classification—compliant with medical privacy standards. Perfect for AI diagnostics, research, and clinical tools."    },
+        "Expert medical image annotation for MRI, CT, X-rays, and pathology slides. We deliver accurate organ segmentation, tumor marking, and condition classification—compliant with medical privacy standards. Perfect for AI diagnostics, research, and clinical tools.",
+    },
     {
       icon: Database,
       title: "Data Collection Service",
       id: 4,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfMFI6dCfUEQUOxALW7NhBWgrGtnIoRgFtSu6k9jWNW8cJa3VLIkPDHAK9hj_vgopWK04&usqp=CAU",
+        "https://images.pexels.com/photos/9783812/pexels-photo-9783812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       description:
-"End-to-end data collection for AI—covering text, images, audio, video, and sensor data. We ensure quality, relevance, and diversity through validated, ethically sourced datasets that are privacy-compliant and ready for training."    },
+        "End-to-end data collection for AI—covering text, images, audio, video, and sensor data. We ensure quality, relevance, and diversity through validated, ethically sourced datasets that are privacy-compliant and ready for training.",
+    },
     {
       icon: Lock,
-      title: "Data De-identification",
+      title: "Data Re-identification",
       id: 5,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF-zlP8Lrc-vpgFTMrf2RmYVaMiiAPP7yUog&s",
+        "https://www.paubox.com/hubfs/Understanding%20data%20re-identification%20in%20healthcare.jpg",
       description:
-"Privacy-first data de-identification for AI—removing PII from structured and unstructured data using anonymization, pseudonymization, and aggregation. Fully compliant with GDPR, HIPAA, and CCPA, with documented processes and up-to-date methods."    },
+        "Privacy-first data de-identification for AI—removing PII from structured and unstructured data using anonymization, pseudonymization, and aggregation. Fully compliant with GDPR, HIPAA, and CCPA, with documented processes and up-to-date methods.",
+    },
     {
       icon: Sparkles,
       title: "Generative AI Data Solutions",
       id: 6,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6VcHVCrJtujxp8zpKNbRHqRVoqa8KQMb_rA&s",
+        "https://www.paubox.com/hubfs/Understanding%20data%20re-identification%20in%20healthcare.jpg",
       description:
-"Generative AI data solutions for synthetic data creation, augmentation, and validation. We generate realistic text, images, and videos to boost model performance, tackle data scarcity, and cut costs—while preserving real-world patterns and ensuring privacy."    },
+        "Generative AI data solutions for synthetic data creation, augmentation, and validation. We generate realistic text, images, and videos to boost model performance, tackle data scarcity, and cut costs—while preserving real-world patterns and ensuring privacy.",
+    },
     {
       icon: FileText,
       title: "Text Annotation",
       id: 7,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxQYc3xlsGdnlozo5s5iaZvdWMo3w8Kg6uYA&s",
+        "https://cdn.prod.website-files.com/6391b5b30283a58cafb3bb77/672cc092b9f15740985d6a75_text-annotation-innovatiana.jpg",
       description:
-"Text annotation for NLP tasks like entity recognition, sentiment analysis, classification, and relationship extraction. Multilingual, domain-flexible, and quality-controlled—ideal for chatbots, content analysis, and document automation."    },
+        "Text annotation for NLP tasks like entity recognition, sentiment analysis, classification, and relationship extraction. Multilingual, domain-flexible, and quality-controlled—ideal for chatbots, content analysis, and document automation.",
+    },
     {
       icon: Mic,
       title: "Audio Annotation",
       id: 8,
       backgroundUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqRparNtPHvt0Ad5lWKomfgSgioJwGh-wa3g&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNaHk_SVwdMGZjcsqGJiPTI2BvTsbsJJMJG_6xwaf9uW7AY3PSPrE076c9StS_p_hsHq0&usqp=CAU",
       description:
-"Audio annotation for speech recognition and analysis—covering speaker ID, emotion detection, and sound event classification. Multi-language, high-quality datasets with rigorous review for audio AI applications."    },
+        "Audio annotation for speech recognition and analysis—covering speaker ID, emotion detection, and sound event classification. Multi-language, high-quality datasets with rigorous review for audio AI applications.",
+    },
     {
       icon: Mic,
       title: "NLP",
       id: 9,
       backgroundUrl:
-        "https://www.shaip.com/wp-content/uploads/2022/10/Blog-What-is-NLP.jpg",
+        "https://cdn.prod.website-files.com/656a6f5ca4824808211181c5/657792558785c8e1344de5d0_NLP-2-1.png",
       description:
-"NLP enables computers to understand and interact with human language. Applications include machine translation, sentiment analysis, text summarization, and speech recognition."    },
+        "NLP enables computers to understand and interact with human language. Applications include machine translation, sentiment analysis, text summarization, and speech recognition.",
+    },
   ];
 
   useGSAP(() => {
@@ -116,8 +126,7 @@ const Services = () => {
         scrub: 1,
       },
       opacity: 0,
-    
-    })
+    });
     gsap.from(servicePRef.current, {
       y: 100,
       scrollTrigger: {
@@ -126,12 +135,11 @@ const Services = () => {
         end: "top 50%",
         scrub: 1,
       },
-      opacity: 0, 
-    })
-
+      opacity: 0,
+    });
     gsap.from(cardRefs.current, {
       y: 100,
-      stagger:0.1,
+      stagger: 0.1,
       scrollTrigger: {
         trigger: cardRefs.current,
         start: "top 70%",
@@ -139,29 +147,50 @@ const Services = () => {
         scrub: 1,
       },
       opacity: 0,
-    })
-  })
+    });
+  });
 
   return (
-    <section ref={containerRef} style={{fontFamily:"verdana"}} id="services" className="py-20 px-10 overflow-hidden bg-[#0E0C15]">
+    <section
+      ref={containerRef}
+      style={{ fontFamily: "verdana" }}
+      id="services"
+      className="py-20 px-10 overflow-hidden"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 ref={serviceH1Ref} className="text-5xl font-bold text-gray-100">
             Our Services
           </h1>
-          <p ref={servicePRef} className="text-xl mt-10 text-gray-400 max-w-3xl mx-auto">
+          <p
+            ref={servicePRef}
+            className="text-xl mt-10 text-gray-400 max-w-3xl mx-auto"
+          >
             We offer comprehensive AI-powered data annotation and content
             management solutions to help businesses build better AI models.
           </p>
         </div>
 
         <div className="flex flex-wrap justify-evenly gap-8">
-          {services.map((item, index) => (
-            <ServiceCard ref={(el) => (cardRefs.current[index] = el)} key={index} item={item} />
+          {(showAll ? services : services.slice(0, 6)).map((item, index) => (
+            <ServiceCard
+              ref={(el) => (cardRefs.current[index] = el)}
+              key={index}
+              item={item}
+            />
           ))}
         </div>
-      </div>
-    </section>
+
+        <div className="text-center mt-12">
+          <button
+            onClick={() => setShowAll((prev) => !prev)}
+            className="bg-[#0e0c15] text-white px-6 py-2 rounded-full hover:bg-[#2a2b6e] transition"
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        </div>
+    </div>
+    </section >
   );
 };
 

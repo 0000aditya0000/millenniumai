@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Brain } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-const Footer = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+const Footer: React.FC = () => {
+  const footerRef = useRef<HTMLElement | null>(null);
+
+  useGSAP(() => {
+    gsap.from(footerRef.current, {
+      opacity: 0,
+      y: 60,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: 'top 100%',
+        end:"bottom 100%",
+        scrub:1
+      },
+    });
+  }, []);
+
   return (
-    <footer className="bg-[#0e0c15] text-white py-12">
+    <footer ref={footerRef} className="footer-section text-white z-20 py-12">
       <div className="container mx-auto px-4">
         <div className="flex justify-evenly flex-wrap gap-8">
           <div>
@@ -15,29 +37,27 @@ const Footer = () => {
               Transforming businesses through innovative AI solutions.
             </p>
           </div>
-          
-         
-          
+
           <div>
             <h3 className="text-lg font-bold mb-4">Connect With Us</h3>
             <div className="flex space-x-4">
-              <a href="#" target='_blank' className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" target="_blank" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="https://x.com/Millennium_Ai_" target='_blank' className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://x.com/Millennium_Ai_" target="_blank" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter className="h-6 w-6" />
               </a>
-              <a href="https://www.linkedin.com/company/millennium-ai/" target='_blank' className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/millennium-ai/" target="_blank" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="https://www.instagram.com/millennium_ai_?igsh=NGk4MDc1dndpa3N2&utm_source=qr" target='_blank' className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/millennium_ai_?igsh=NGk4MDc1dndpa3N2&utm_source=qr" target="_blank" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
             </div>
           </div>
         </div>
-        
-        <div className=" mt-8 pt-8 text-center text-gray-400">
+
+        <div className="mt-8 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Millennium AI. All rights reserved.</p>
         </div>
       </div>

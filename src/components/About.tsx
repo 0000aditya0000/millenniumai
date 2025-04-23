@@ -85,7 +85,7 @@ export default function About() {
   ];
 
   return (
-    <section style={{fontFamily:"verdana"}} ref={containerRef} className="bg-[#0e0c15] relative py-20">
+    <section style={{fontFamily:"verdana"}} ref={containerRef} className=" relative py-20">
       <div className="px-20">
         <h1 ref={aboutH1Ref} className="text-5xl font-bold text-gray-100 text-center mt-20">
           Who are We
@@ -103,16 +103,16 @@ export default function About() {
             <div
               ref={(el) => (aboutCardsRefs.current[index] = el)}
               key={index}
-              className={`bg-[#0e0c15] flex flex-col justify-between py-10 min-h-[500px] px-20 border-r ${index === aboutContent.length - 1 ? "border-none" : ""
+              className={`flex flex-col justify-between py-10 min-h-[500px] px-20 border-r ${index === aboutContent.length - 1 ? "border-none" : ""
                 } border-[#444]`}
             >
-             <div className=" flex justify-between">
-             <h3 className="text-5xl font-semibold text-gray-100 mb-4">
+             <div className="flex items-center flex-col-reverse justify-center">
+             <h3 className="text-5xl mt-5 font-semibold text-gray-100 mb-4">
                 {content.title}
               </h3>
               <content.icon className="h-12 w-12 text-indigo-600" />
              </div>
-              <p className="text-gray-400 text-md">{content.description}</p>
+              <p className="text-gray-400 text-center text-md">{content.description}</p>
             </div>
           ))}
         </div>
