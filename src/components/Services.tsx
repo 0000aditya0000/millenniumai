@@ -12,8 +12,9 @@ import {
 } from "lucide-react";
 import ServiceCard from "./ServiceCard";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger"; 
 import { useGSAP } from "@gsap/react";
+import Banner from "./ServiceSlider";
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
@@ -202,7 +203,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div ref={cardsRef} className="flex flex-wrap justify-evenly gap-8">
+        {/* <div ref={cardsRef} className="flex flex-wrap justify-evenly gap-8">
           {(showAll ? services : services.slice(0, 6)).map((item, index) => (
             <ServiceCard
               ref={(el) => (cardRefs.current[index] = el)}
@@ -210,16 +211,18 @@ const Services = () => {
               item={item}
             />
           ))}
-        </div>
+        </div> */}
 
-        <div className="text-center mt-12">
+        <Banner services={services} />
+
+        {/* <div className="text-center mt-12">
           <button
             onClick={() => setShowAll((prev) => !prev)}
             className="bg-[#0e0c15] text-white px-6 py-2 rounded-full hover:bg-[#2a2b6e] transition"
           >
             {showAll ? "Show Less" : "Show More"}
           </button>
-        </div>
+        </div> */}
     </div>
     </section >
   );

@@ -45,7 +45,7 @@ const Header = () => {
               <User className="h-5 w-5" />
             </button>
             <button className="px-4 py-2 rounded-full bg-white text-black font-semibold hover:bg-gray-100 transition">
-              Install ArgusVPN
+              Get Started
             </button>
           </div>
 
