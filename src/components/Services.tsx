@@ -22,6 +22,8 @@ const Services = () => {
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
   const [showAll, setShowAll] = useState(false);
+  const textRef = useRef(null);
+  const cardsRef = useRef(null);
 
   const services = [
     {
@@ -137,17 +139,46 @@ const Services = () => {
       },
       opacity: 0,
     });
-    gsap.from(cardRefs.current, {
-      y: 100,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: cardRefs.current,
-        start: "top 70%",
-        end: "top 50%",
-        scrub: 1,
-      },
-      opacity: 0,
+    gsap.utils.toArray(cardRefs.current).forEach((card, i) => {
+      gsap.from(card, {
+        y: 100,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          end: "top 50%",
+          scrub: 1,
+        },
+        delay: i * 0.1,
+      });
     });
+    
+
+    gsap.to(textRef.current,{
+      y:-40,
+      opacity:0,
+      scrollTrigger:{
+        trigger:textRef.current,
+        start:"bottom 30%",
+        end:"bottom 20%",
+        scrub:1,
+      }
+    })
+
+    // gsap.utils.toArray(cardRefs.current).forEach((card, i) => {
+    //   gsap.to(card, {
+    //     y: -40,
+    //     opacity: 0,
+    //     duration:.5,
+    //     scrollTrigger: {
+    //       trigger: card,
+    //       start: "top 10%",
+    //       end: "top 0%",
+    //       scrub: 1,
+    //     },
+    //   });
+    // });
+
   });
 
   return (
@@ -158,7 +189,7 @@ const Services = () => {
       className="py-20 px-10 overflow-hidden"
     >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div ref={textRef} className="text-center mb-16">
           <h1 ref={serviceH1Ref} className="text-5xl font-bold text-gray-100">
             Our Services
           </h1>
@@ -171,7 +202,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-evenly gap-8">
+        <div ref={cardsRef} className="flex flex-wrap justify-evenly gap-8">
           {(showAll ? services : services.slice(0, 6)).map((item, index) => (
             <ServiceCard
               ref={(el) => (cardRefs.current[index] = el)}

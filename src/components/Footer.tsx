@@ -27,13 +27,13 @@ const Footer: React.FC = () => {
   return (
     <footer ref={footerRef} className="footer-section text-white z-20 py-12">
       <div className="container mx-auto px-4">
-        <div className="flex justify-evenly flex-wrap gap-8">
+        <div className="flex px-44 justify-between flex-wrap gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Brain className="h-8 w-8 text-indigo-400" />
               <span className="text-2xl font-bold">Millennium AI</span>
             </div>
-            <p className="text-gray-400">
+            <p className="text-gray-400 w-60">
               Transforming businesses through innovative AI solutions.
             </p>
           </div>

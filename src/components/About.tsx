@@ -11,6 +11,8 @@ export default function About() {
   const aboutPRef = useRef(null);
   const aboutCardsRefs = useRef([])
   const containerRef = useRef(null);
+  const textRef = useRef(null);
+  const cardsRef = useRef(null);
 
   useGSAP(() => {
 
@@ -61,6 +63,28 @@ export default function About() {
       } 
     })
 
+    gsap.to(textRef.current, {
+      y:-50,
+      opacity:0,
+      scrollTrigger:{
+        trigger: textRef.current,
+        start: "bottom 40%",
+        end: "bottom 30%",
+        scrub: 1,
+      }
+    })
+
+    gsap.to(cardsRef.current, {
+      y:-50,
+      opacity:0,
+      scrollTrigger:{
+        trigger: cardsRef.current,
+        start: "bottom 70%",
+        end: "bottom 50%",
+        scrub: 1,
+      }
+    })
+
   }, []);
 
   const aboutContent = [
@@ -86,7 +110,7 @@ export default function About() {
 
   return (
     <section style={{fontFamily:"verdana"}} ref={containerRef} className=" relative py-20">
-      <div className="px-20">
+      <div ref={textRef} className="px-20">
         <h1 ref={aboutH1Ref} className="text-5xl font-bold text-gray-100 text-center mt-20">
           Who are We
         </h1>
@@ -98,7 +122,7 @@ export default function About() {
         
       <div className="flex justify-center mt-20 border-[#444]">
         
-        <div className="grid md:grid-cols-3">
+        <div ref={cardsRef} className="grid md:grid-cols-3">
           {aboutContent.map((content, index) => (
             <div
               ref={(el) => (aboutCardsRefs.current[index] = el)}

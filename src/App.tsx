@@ -11,7 +11,6 @@ import BgVideo from './components/BgVideo'
 function App() {
   return (
     <div className="min-h-screen ">
-      {/* <video autoPlay muted loop className='fixed z-0' src={BgVideo}></video> */}
      <BgVideo />
 
       <Header />

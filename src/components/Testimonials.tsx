@@ -30,6 +30,8 @@ const Testimonials = () => {
   const h1Ref = useRef(null)
   const pRef = useRef(null)
   const cardRefs = useRef([])
+  const textRef = useRef(null)
+  const containerRef = useRef(null)
 
 
   useGSAP(() => {
@@ -66,20 +68,42 @@ const Testimonials = () => {
       },
       opacity: 0,
     })
+
+    gsap.to(textRef.current,{
+      y:-40,
+      opacity:0,
+      scrollTrigger:{
+        trigger:textRef.current,
+        start:"bottom 30%",
+        end:"bottom 20%",
+        scrub:1,
+      }
+    })
+
+    gsap.to(containerRef.current, {
+      y: -40,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "bottom 45%",
+        end: "bottom 30%",
+        scrub: 1,
+      },
+    });
   })
 
 
   return (
     <section style={{ fontFamily: "verdana" }} id="testimonials" className="py-20 px-28 ">
       <div className="container  mx-auto px-4">
-        <div className="text-center mb-16">
+        <div ref={textRef} className="text-center mb-16">
           <h1 ref={h1Ref} className="text-5xl font-bold text-gray-100 ">What Our Clients Say</h1>
           <p ref={pRef} className="text-xl text-gray-400 mt-10 max-w-3xl mx-auto">
             Don't just take our word for it - hear from some of our satisfied clients.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div ref={containerRef} className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               ref={(el) => (cardRefs.current[index] = el)}

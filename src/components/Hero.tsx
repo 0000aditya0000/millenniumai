@@ -15,6 +15,7 @@ export default function Hero() {
   const parallelogramRef = useRef<(HTMLDivElement | null)[]>([])
   const btnRef = useRef(null)
   const btnTextRef = useRef<(HTMLSpanElement | null)[]>([])
+  const textRef = useRef(null)
 
   const heading = ['Accelerate Your AI', 'with Precision', 'Annotation']
   const para =
@@ -52,6 +53,19 @@ export default function Hero() {
       delay: 0.3,
       opacity: 0,
     })
+
+    gsap.to(textRef.current,{
+      y:-40,
+      opacity:0,
+      stagger:0.1,  
+      scrollTrigger:{
+        trigger:textRef.current,
+        scrub:true,
+        start:"bottom 60%",
+        end:"bottom 40%",
+        
+      }
+    })
   })
 
   return (
@@ -64,7 +78,7 @@ export default function Hero() {
         <div className='flex'>
 
           <div className='flex-1 flex'>
-            <div className='pl-11 z-10 pr-5 max-w-[700px] flex flex-col'>
+            <div ref={textRef} className='pl-11 z-10 pr-5 max-w-[700px] flex flex-col'>
               <h1 className='mt-40'>
                 {heading.map((item, index) => (
                   <span

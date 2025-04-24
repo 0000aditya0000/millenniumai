@@ -15,6 +15,8 @@ const ContactPage: React.FC = () => {
   const pRef = useRef<HTMLParagraphElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null)
+
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -58,6 +60,17 @@ const ContactPage: React.FC = () => {
         },
       });
     });
+
+    gsap.to(textRef.current,{
+      y:-40,
+      opacity:0,
+      scrollTrigger:{
+        trigger: textRef.current,
+        start:"bottom 30$%",
+        end: "bottom 20%",
+        scrub:1
+      }
+    })
   
     ScrollTrigger.refresh();
   }, []);
@@ -70,8 +83,8 @@ const ContactPage: React.FC = () => {
         <div className="contact-stars"></div>
       </div>
       <div className="container mx-auto px-4 py-16 max-w-6xl relative z-10">
-        <div className="text-center mb-12 contact-header">
-          <h2
+        <div ref={textRef} className="text-center mb-12 contact-header">
+          <h2 
             ref={h1Ref}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >

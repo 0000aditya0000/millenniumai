@@ -7,6 +7,7 @@ const ServiceCard = forwardRef(({ item }, ref) => {
 
     const h1Ref = useRef(null);
     const pContainerRef = useRef(null);
+    const containerRef = useRef(null)
 
     const onHover = () => {
         gsap.to(h1Ref.current, {
@@ -19,6 +20,19 @@ const ServiceCard = forwardRef(({ item }, ref) => {
             duration: 0.5,
         });
     };
+
+    useGSAP(()=>{
+        gsap.to(containerRef.current,{
+            y:-40,
+            opacity:0,
+            scrollTrigger:{
+                trigger:containerRef.current,
+                start:"bottom 30%",
+                end:"bottom 20%",
+                scrub:1
+            }
+        })
+    })
 
     const onHoverLeave = () => {
         gsap.to(h1Ref.current, {
@@ -33,15 +47,12 @@ const ServiceCard = forwardRef(({ item }, ref) => {
     };
 
     return (
+        <div ref={containerRef}>
         <div
-            className="relative mt-10 w-[350px] h-[300px] rounded-lg overflow-hidden shadow-lg shadow-[#222] hover:shadow-[#444] flex items-center justify-center bg-black"
+            className="relative mt-10 w-[350px] h-[300px] rounded-lg overflow-hidden shadow-[0_0_10px_#444] hover:shadow-[0_0_10px_#777] flex items-center justify-center bg-black"
             ref={ref}
         >
-            {isFour && (
-                <div className="w-[300px] h-[300px] absolute left-60 top-48 bg-[#1B1640] bg-gradient-to-r from-[#1B1640] to-transparent blur-3xl" />
-            )}
-
-            <div
+            <div 
                 onMouseEnter={onHover}
                 onMouseLeave={onHoverLeave}
                 className="relative w-full h-full"
@@ -69,6 +80,7 @@ const ServiceCard = forwardRef(({ item }, ref) => {
                     <p className="text-white text-sm absolute bottom-5 pr-6">{item.description}</p>
                 </div>
             </div>
+        </div>
         </div>
     );
 });
