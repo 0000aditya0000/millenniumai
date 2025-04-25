@@ -1,5 +1,5 @@
 .slider {
-    animation: autoRun 20s linear infinite;
+    animation: autoRun 50s linear infinite;
     transform-style: preserve-3d;
     transform: perspective(1000px) rotateX(-16deg);
     animation-play-state: running;

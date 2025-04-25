@@ -41,7 +41,7 @@ const Banner = ({ services }) => {
           <div
             key={i}
             // onClick={() => handleClick(i)}
-            className="item absolute overflow-hidden inset-0 bg-gray-400"
+            className="item absolute hover:shadow-[0_0_10px_#444] overflow-hidden inset-0 bg-gray-400"
             style={{
               transform: `rotateY(${i * (360 / services.length)}deg) translateZ(550px)`,
             }}
