@@ -53,7 +53,7 @@ const Banner = ({ services }) => {
             />
             <div className="description">
               <h3 className="text-white text-[12px] font-bold">{item.title}</h3>
-              <p className="text-white text-[10px]">{item.description}</p>
+              <p className="text-white text-[9px]">{item.description}</p>
             </div>
           </div>
         ))}
