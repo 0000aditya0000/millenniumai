@@ -1,5 +1,9 @@
-import React from 'react';
-import { Star } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Star } from 'lucide-react'
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
   const testimonials = [
@@ -23,19 +27,90 @@ const Testimonials = () => {
     }
   ];
 
+  const h1Ref = useRef(null)
+  const pRef = useRef(null)
+  const cardRefs = useRef([])
+  const textRef = useRef(null)
+  const containerRef = useRef(null)
+
+
+  useGSAP(() => {
+    gsap.from(h1Ref.current, {
+      y: 100,
+      scrollTrigger: {
+        trigger: h1Ref.current,
+        start: "top 70%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      opacity: 0,
+
+    })
+    gsap.from(pRef.current, {
+      y: 100,
+      scrollTrigger: {
+        trigger: pRef.current,
+        start: "top 70%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      opacity: 0,
+    })
+
+    gsap.from(cardRefs.current, {
+      y: 100,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: cardRefs.current,
+        start: "top 70%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      opacity: 0,
+    })
+
+    gsap.to(textRef.current,{
+      y:-40,
+      opacity:0,
+      scrollTrigger:{
+        trigger:textRef.current,
+        start:"bottom 30%",
+        end:"bottom 20%",
+        scrub:1,
+      }
+    })
+
+    gsap.to(containerRef.current, {
+      y: -40,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "bottom 45%",
+        end: "bottom 30%",
+        scrub: 1,
+      },
+    });
+  })
+
+
   return (
-    <section id="testimonials" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+    <section style={{ fontFamily: "verdana" }} id="testimonials" className="py-20 px-28 ">
+      <div className="container  mx-auto px-4">
+        <div ref={textRef} className="text-center mb-16">
+          <h1 ref={h1Ref} className="text-5xl font-bold text-gray-100 ">What Our Clients Say</h1>
+          <p ref={pRef} className="text-xl text-gray-400 mt-10 max-w-3xl mx-auto">
             Don't just take our word for it - hear from some of our satisfied clients.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div ref={containerRef} className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div
+              ref={(el) => (cardRefs.current[index] = el)}
+              key={index}
+              className=" p-8 rounded-xl backdrop-blur-md border border-white/10 hover:shadow-[#333] shadow-[#111] shadow-lg transition-shadow"
+            >
+
               <div className="flex items-center mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />

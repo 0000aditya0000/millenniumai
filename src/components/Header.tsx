@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Menu, X, Brain } from 'lucide-react';
-import Logo from '../assets/logo.png'
+import React, { useState, useRef } from 'react';
+import { Menu, X, Brain, User } from 'lucide-react';
+import Logo from '../assets/image.png'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react'
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef(null)
 
   const navItems = [
     { name: 'Home', href: '#' },
@@ -12,30 +15,35 @@ const Header = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  useGSAP(() => {
+    gsap.from (navRef.current, {y: -100, duration: 2, ease: 'power4.out', opacity: 0})
+  })
+
   return (
-    <header className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-      <nav className="container mx-auto px-4 py-4">
+    <header className="fixed w-full  backdrop-blur-xl z-50 shadow-sm">
+      <nav ref={navRef} className="container mx-auto px-20 py-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-           <img src={Logo} style={{height:"5rem", width:"15rem"}}/>
+           <img src={Logo} style={{height:"4rem", width:"12rem"}}/>
            
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center justify-evenly w-full">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-indigo-600 transition-colors"
+                className="text-gray-400 font-code text-md hover:text-white transition-colors"
               >
                 {item.name}
               </a>
             ))}
-            <button className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition-colors">
-              Get Started
-            </button>
+           
           </div>
+         
+          
+         
 
           {/* Mobile Menu Button */}
           <button
