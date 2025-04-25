@@ -1,92 +1,131 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useRef } from 'react'
+import Parallelogram from './Parallelogram'
+import Image1 from '../assets/images/image1.png'
+import Image2 from '../assets/images/image2.png'
+import Image3 from '../assets/images/image3.png'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
-const Hero = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+export default function Hero() {
+  const topLine = useRef(null)
+  const leftLine = useRef(null)
+  const rightLine = useRef(null)
+  const headingRef = useRef<(HTMLSpanElement | null)[]>([])
+  const paraRef = useRef<(HTMLSpanElement | null)[]>([])
+  const parallelogramRef = useRef<(HTMLDivElement | null)[]>([])
+  const btnRef = useRef(null)
+  const btnTextRef = useRef<(HTMLSpanElement | null)[]>([])
+  const textRef = useRef(null)
 
-  const slides = [
-    {
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995",
-      title: "AI-Powered Solutions",
-      description: "Transforming businesses through innovative artificial intelligence solutions"
-    },
-    {
-      image: "https://www.rws.com/media/images/data-annotation-and-labelling-mobile_tcm228-236599.png?v=20250120070103",
-      title: "Future of Technology",
-      description: "Empowering your digital transformation journey with cutting-edge AI"
-    },
-    {
-      image: "https://images.prismic.io/turing/652ec3d7fbd9a45bcec8198a_Named_Entity_Recognition_NER_11zon_3a4a69836b.webp?auto=format,compress",
-      title: "",
-      description: ""
-    },
-    {
-      image: "https://mindy-support.com/wp-content/uploads/2023/04/what-is-geospatial-annotation_.png",
-      title: "Geospatial Annotation",
-      description: ""
-    }
-  ];
+  const heading = ['Accelerate Your AI', 'with Precision', 'Annotation']
+  const para =
+    'Image, Video & Geospatial Annotation Services powered by experts and smart tech.'
+  const paragraph = para.split(' ')
+  const btn = 'Get Started'
+  const button = btn.split('')
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
+  useGSAP(() => {
+    gsap.from(topLine.current, { x: '-100%', duration: 2, opacity: 0 })
+    gsap.from(leftLine.current, { y: '100%', duration: 2 })
+    gsap.from(rightLine.current, { y: '100%', duration: 2 })
+    gsap.from(headingRef.current, {
+      y: 40,
+      opacity: 0,
+      stagger: 0.12,
+      delay: 0.1,
+    })
+    gsap.from(paraRef.current, {
+      y: 25,
+      opacity: 0,
+      stagger: 0.018,
+      delay: 0.5,
+    })
+    gsap.from(parallelogramRef.current, {
+      x: -50,
+      opacity: 0,
+      stagger: 0.1,
+      delay: 0.2,
+    })
+    gsap.from(btnRef.current, { scale: 0, borderRadius: 50, delay: 0.1 })
+    gsap.from(btnTextRef.current, {
+      y: 10,
+      stagger: 0.009,
+      delay: 0.3,
+      opacity: 0,
+    })
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+    gsap.to(textRef.current,{
+      y:-40,
+      opacity:0,
+      stagger:0.1,  
+      scrollTrigger:{
+        trigger:textRef.current,
+        scrub:true,
+        start:"bottom 60%",
+        end:"bottom 40%",
+        
+      }
+    })
+  })
 
   return (
-    <div className="relative h-screen">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <div className="absolute inset-0 bg-black/50 z-10" />
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 z-20 flex items-center justify-center text-center">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                {slide.title}
+    <>
+      <div className='absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-[1] pointer-events-none'></div>
+
+      <div className='relative z-10 px-20 py-20 bg-transparent'>
+        
+
+        <div className='flex'>
+
+          <div className='flex-1 flex'>
+            <div ref={textRef} className='pl-11 z-10 pr-5 max-w-[700px] flex flex-col'>
+              <h1 className='mt-40'>
+                {heading.map((item, index) => (
+                  <span
+                    ref={(el) => (headingRef.current[index] = el)}
+                    key={index}
+                    className='text-6xl inline-block font-bold text-white'
+                  >
+                    {item} <br />
+                  </span>
+                ))}
               </h1>
-              <p className="text-xl md:text-2xl text-gray-200 mb-8">
-                {slide.description}
+
+              <p className='max-w-[32vw] mt-10'>
+                {paragraph.map((item, index) => (
+                  <span
+                    ref={(el) => (paraRef.current[index] = el)}
+                    key={index}
+                    className='text-xl inline-block pr-2 text-white'
+                  >
+                    {item}{' '}
+                  </span>
+                ))}
               </p>
-              <button className="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg hover:bg-indigo-700 transition-colors">
-                Learn More
+
+              <button
+                ref={btnRef}
+                className='max-w-[10vw] mt-10 bg-[#1b123a] px-2 py-2 rounded-md overflow-hidden drop-shadow-[0_0_10px_#222]'
+              >
+                {button.map((item, index) => (
+                  <span
+                    ref={(el) => (btnTextRef.current[index] = el)}
+                    key={index}
+                    className={`text-white ${index === 3 ? 'ml-2' : ''} inline-block`}
+                  >
+                    {item}
+                  </span>
+                ))}
               </button>
             </div>
-          </div>
-        </div>
-      ))}
-      
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors"
-      >
-        <ChevronLeft className="h-6 w-6 text-white" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors"
-      >
-        <ChevronRight className="h-6 w-6 text-white" />
-      </button>
-    </div>
-  );
-};
 
-export default Hero;
+            <div className='flex-1 flex gap-5 pt-20 mr-24'>
+              {/* Reserved for right side visuals, cards or images */}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </>
+  )
+}

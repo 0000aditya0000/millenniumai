@@ -6,11 +6,13 @@ import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import './App.css'
+import BgVideo from './components/BgVideo'
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
+     <BgVideo />
+
       <Header />
       <main>
         <Hero />

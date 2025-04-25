@@ -1,91 +1,105 @@
-import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import React, { useRef } from 'react';
+import ContactHeader from './ContactHeader';
+import ContactInfo from './ContactInfo';
+import ContactForm from './ContactForm';
+import './Contact.css';
 
-const Contact = () => {
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const ContactPage: React.FC = () => {
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+  const pRef = useRef<HTMLParagraphElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".contact-header",
+        start: "top 70%",
+        end: "top 40%",
+        scrub: 1,
+      },
+    });
+  
+    tl.from(h1Ref.current, { y: 100, opacity: 0, duration: 0.8 });
+    tl.from(pRef.current, { y: 100, opacity: 0, duration: 0.8 }, "-=0.4");
+  
+    gsap.utils.toArray(".contact-info-item").forEach((item, i) => {
+      gsap.from(item, {
+        opacity: 0,
+        x: -50,
+        duration: 0.6,
+        delay: i * 0.2,
+        scrollTrigger: {
+          trigger: item,
+          start: "top 85%",
+          end: "top 65%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+
+    
+  
+    gsap.utils.toArray(".form-group").forEach((item, i) => {
+      gsap.from(item, {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        delay: i * 0.15,
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%",
+          end: "top 70%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+  
+    ScrollTrigger.refresh();
+  }, []);
+  
+
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your business with AI? Contact us today.
+    <section id="contact" className="contact-page">
+
+      <div className="contact-background">
+        <div className="contact-gradient"></div>
+        <div className="contact-stars"></div>
+      </div>
+      <div className="container mx-auto px-4 py-16 max-w-6xl relative z-10">
+        <div className="text-center mb-12 contact-header">
+          <h2
+            ref={h1Ref}
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+          >
+            Get in Touch
+          </h2>
+          <p
+            ref={pRef}
+            className="text-lg text-gray-300 max-w-xl mx-auto"
+          >
+            Ready to transform your business with AI? We're here to help you navigate the future.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <Mail className="h-6 w-6 text-indigo-600 mt-1 mr-4" />
-                <div>
-                  <h4 className="font-bold text-gray-900">Email</h4>
-                  <p className="text-gray-600">info@millenniumai.in </p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Phone className="h-6 w-6 text-indigo-600 mt-1 mr-4" />
-                <div>
-                  <h4 className="font-bold text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+91-9319410265</p>
-                  <p className="text-gray-600">+91-7053171752</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <MapPin className="h-6 w-6 text-indigo-600 mt-1 mr-4" />
-                <div>
-                  <h4 className="font-bold text-gray-900">Location</h4>
-                  <p className="text-gray-600">UGF-02 Krishna Enclave Govindpuram Ghaziabad - 201002</p>
-                </div>
-              </div>
-            </div>
+        <div className="contact-content grid md:grid-cols-2 gap-12">
+          <div ref={infoRef}>
+            <ContactInfo />
           </div>
-
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                placeholder="your@email.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                placeholder="Your message"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
+          <div ref={formRef}>
+            <ContactForm />
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Contact;
+export default ContactPage;
