@@ -91,25 +91,25 @@ export default function About() {
     {
       title: "Our Mission",
       description:
-        " To empower businesses with AI-driven solutions that drive growth, efficiency, and innovation in the digital age.",
+        " Our mission is to empower businesses with cutting-edge, AI-driven solutions that fuel growth, enhance operational efficiency, and spark innovation, helping them thrive in the ever-evolving digital landscape.",
       icon : Target
     },
     {
       title: "Our Team",
       description:
-        " A diverse group of AI experts, developers, and business strategists working together to deliver exceptional results.",
+        "We are a diverse team of AI experts, skilled developers, and forward-thinking business strategists united by a shared vision—to collaborate seamlessly and deliver exceptional, results-driven solutions tailored to each client’s unique goals.",
         icon: Users
     },
     {
       title: "Our Vision",
       description:
-        " To lead the AI revolution by creating innovative solutions that shape the future of technology and business.",
+       "Our vision is to lead the AI revolution by developing groundbreaking solutions that not only push the boundaries of technology but also transform the way businesses operate—shaping a smarter, more efficient, and forward-looking future.",
         icon: Lightbulb
     },
   ];
 
   return (
-    <section style={{fontFamily:"verdana"}} ref={containerRef} className=" relative py-20">
+    <section id="about" style={{fontFamily:"verdana"}} ref={containerRef} className=" relative py-20">
       <div ref={textRef} className="px-20">
         <h1 ref={aboutH1Ref} className="text-5xl font-bold text-gray-100 text-center mt-20">
           Who are We
@@ -127,7 +127,7 @@ export default function About() {
             <div
               ref={(el) => (aboutCardsRefs.current[index] = el)}
               key={index}
-              className={`flex flex-col justify-between py-10 min-h-[500px] px-20 border-r ${index === aboutContent.length - 1 ? "border-none" : ""
+              className={`flex flex-col justify-evenly py-10 min-h-[500px] px-20 border-r ${index === aboutContent.length - 1 ? "border-none" : ""
                 } border-[#444]`}
             >
              <div className="flex items-center flex-col-reverse justify-center">

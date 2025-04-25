@@ -77,7 +77,7 @@ const ContactPage: React.FC = () => {
   
 
   return (
-    <section className="contact-page">
+    <section id='contact' className="contact-page">
       <div className="contact-background">
         <div className="contact-gradient"></div>
         <div className="contact-stars"></div>

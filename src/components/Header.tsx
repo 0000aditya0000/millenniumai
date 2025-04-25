@@ -39,15 +39,7 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Actions */}
-          <div className="hidden md:flex items-center gap-4">
-            <button className="p-2 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all">
-              <User className="h-5 w-5" />
-            </button>
-            <button className="px-4 py-2 rounded-full bg-white text-black font-semibold hover:bg-gray-100 transition">
-              Get Started
-            </button>
-          </div>
+         
 
           {/* Mobile Menu Button */}
           <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
@@ -72,9 +64,7 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            <button className="w-full bg-white text-black py-2 rounded-full font-semibold hover:bg-gray-200 transition">
-              Get Started
-            </button>
+            
           </div>
         )}
       </nav>
