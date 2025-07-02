@@ -15,7 +15,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo left */}
         <div className="flex items-center gap-2">
-          <FaTape className="text-3xl text-[#b07a3c] drop-shadow" />
+          {/* <FaTape className="text-3xl text-[#b07a3c] drop-shadow" /> */}
+          <img src="/src/assets/logo.png" alt="Power Fixit" className="w-10 h-10" />
           <span className="font-extrabold text-2xl text-[#1a2341] tracking-wide">Power Fixit</span>
         </div>
         {/* Nav links center */}
