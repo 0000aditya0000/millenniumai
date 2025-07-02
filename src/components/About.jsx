@@ -1,4 +1,3 @@
-import aboutimg from "../assets/42_files/powerfixit.pdf-image-054.jpg";
 import { FaCheckCircle } from "react-icons/fa";
 
 export default function About() {
