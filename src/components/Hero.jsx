@@ -1,10 +1,10 @@
-
+import heroimg from "../assets/Tape.png";
 export default function Hero() {
   return (
     <section
       className="w-full min-h-[70vh] flex items-center justify-center relative px-4 md:px-0"
       style={{
-        background: "url('/src/assets/Tape.png') no-repeat center center/cover",
+        background: ` url(${heroimg}) no-repeat center center/cover`
       }}
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 py-16 md:py-0 relative z-10">

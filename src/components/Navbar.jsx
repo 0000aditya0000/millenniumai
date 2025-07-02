@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaTape } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 const navLinks = [
   { label: "Home", href: "#" },
@@ -16,7 +17,7 @@ export default function Navbar() {
         {/* Logo left */}
         <div className="flex items-center gap-2">
           {/* <FaTape className="text-3xl text-[#b07a3c] drop-shadow" /> */}
-          <img src="/src/assets/logo.png" alt="Power Fixit" className="w-10 h-10" />
+          <img src={logo} alt="Power Fixit" className="w-10 h-10" />
           <span className="font-extrabold text-2xl text-[#1a2341] tracking-wide">Power Fixit</span>
         </div>
         {/* Nav links center */}
