@@ -10,7 +10,7 @@ import Stats from "./components/Stats";
 import HowItWorks from "./components/HowItWorks";
 import Features from "./components/Features";
 import CallToAction from "./components/CallToAction";
-import SpecialtyTapes from "./components/SpecialtyTapes";
+// import SpecialtyTapes from "./components/SpecialtyTapes";
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
       <Hero />
       <TrustedBy />
       <Services/>
-      <SpecialtyTapes/>
       <Features />
       <HowItWorks/>
       <CallToAction />

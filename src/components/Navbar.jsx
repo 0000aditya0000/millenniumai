@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaTape } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
@@ -9,10 +9,59 @@ const navLinks = [
   { label: "Testimonials", href: "#testimonials" },
 ];
 
+// Custom hook for scrollspy
+function useScrollSpy(ids, offset = 0) {
+  const [activeId, setActiveId] = useState(ids[0]);
+  useEffect(() => {
+    function onScroll() {
+      let found = ids[0];
+      for (let id of ids) {
+        const el = document.getElementById(id.replace('#', ''));
+        if (el) {
+          const top = el.getBoundingClientRect().top - offset;
+          if (top <= 0) found = id;
+        }
+      }
+      setActiveId(found);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [ids, offset]);
+  return activeId;
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const sectionIds = ["#", "#services", "#about", "#testimonials"];
+  const activeId = useScrollSpy(sectionIds, 80);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Smooth scroll handler
+  const handleNavClick = (e, href) => {
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el = document.getElementById(href.replace('#', ''));
+      if (el) {
+        e.preventDefault();
+        window.scrollTo({
+          top: el.offsetTop - 70,
+          behavior: "smooth"
+        });
+      }
+    }
+    setOpen(false);
+  };
+
   return (
-    <nav className="backdrop-blur-xl bg-white shadow-lg sticky top-0 z-50 border-b border-[#b07a3c]/20 transition-all duration-300">
+    <nav className={`backdrop-blur-xl bg-white sticky top-0 z-50 border-b border-[#b07a3c]/20 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo left */}
         <div className="flex items-center gap-2">
@@ -27,10 +76,11 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="relative px-2 py-1 group text-lg font-medium text-[#1a2341] hover:text-[#b07a3c] transition"
+                onClick={e => handleNavClick(e, link.href)}
+                className={`relative px-2 py-1 group text-lg font-medium transition ${activeId === link.href ? 'text-[#b07a3c]' : 'text-[#1a2341] hover:text-[#b07a3c]'}`}
               >
                 {link.label}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-[#b07a3c] to-[#a86b2d] rounded-full transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-[#b07a3c] to-[#a86b2d] rounded-full transition-all duration-300 ${activeId === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
               </a>
             ))}
           </div>
@@ -57,8 +107,8 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-[#1a2341] hover:text-[#b07a3c] transition px-3 py-2 rounded-full"
-              onClick={() => setOpen(false)}
+              onClick={e => handleNavClick(e, link.href)}
+              className={`transition px-3 py-2 rounded-full ${activeId === link.href ? 'text-[#b07a3c]' : 'text-[#1a2341] hover:text-[#b07a3c]'}`}
             >
               {link.label}
             </a>
