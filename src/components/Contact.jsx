@@ -33,22 +33,59 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-[#f3e7d2] via-white to-[#f3e7d2] px-6 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-24 bg-gradient-to-br from-[#f3e7d2] via-white to-[#f3e7d2] px-4 sm:px-8 relative overflow-hidden"
+    >
       {/* Decorative SVG blob */}
       <svg className="absolute left-0 bottom-0 w-60 h-60 opacity-20 blur-2xl -z-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <path fill="#b07a3c" d="M44.8,-67.2C57.2,-59.2,65.2,-44.8,70.2,-29.7C75.2,-14.7,77.2,1,72.2,14.7C67.2,28.3,55.2,39.8,42.2,48.2C29.2,56.7,14.6,62.1,-0.7,62.9C-16,63.7,-32,59.9,-44.2,51.1C-56.4,42.3,-64.8,28.5,-68.2,13.6C-71.6,-1.3,-70,-17.2,-62.7,-29.7C-55.4,-42.2,-42.4,-51.3,-28.2,-58.2C-14,-65.1,1.4,-69.8,16.7,-70.2C32,-70.6,44.8,-67.2,44.8,-67.2Z" transform="translate(100 100)" />
       </svg>
-      <h2 className="text-4xl font-bold mb-10 text-center text-[#b07a3c]">Get in Touch</h2>
+      {/* Animated Decorative Props */}
       <motion.div
-        className="max-w-5xl mx-auto flex flex-col md:flex-row items-stretch gap-10 md:gap-0 bg-white rounded-2xl shadow-lg border-4 border-[#b07a3c] overflow-hidden"
+        className="absolute top-10 left-10 w-16 h-16 rounded-full float-slow bg-[#b07a3c] opacity-30 z-0"
+        initial={{ scale: 0.5, opacity: 0, y: -30 }}
+        whileInView={{ scale: 1, opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      />
+      <motion.div
+        className="absolute top-32 right-16 w-10 h-10 rounded-full float-slow bg-[#1a2341] opacity-20 z-0"
+        initial={{ x: 40, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+      />
+      
+      
+      <motion.div
+        className="absolute bottom-10 right-10 w-14 h-14 rounded-full  bg-[#b07a3c] opacity-20 z-0 float-slow"
+        initial={{ scale: 0.3, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.7 }}
+      />
+      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-[#b07a3c] drop-shadow-lg tracking-tight">
+        Get in Touch
+      </h2>
+      <motion.div
+        className="max-w-5xl mx-auto flex flex-col md:flex-row items-stretch gap-10 md:gap-0 bg-white/90 rounded-3xl shadow-2xl border-4 border-[#b07a3c] overflow-hidden backdrop-blur-md"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.7 }}
       >
         {/* Contact Info Card */}
-        <div className="flex-1 flex flex-col items-left justify-center p-8 md:p-10 bg-white">
-          <h3 className="text-2xl font-extrabold text-[#b07a3c] mb-4">Power Fixit Tapes Industries</h3>
+        <motion.div
+          className="flex-1 flex flex-col items-left justify-center p-8 md:p-12 bg-gradient-to-br from-[#f3e7d2] via-white to-[#f3e7d2] border-r-0 md:border-r-2 border-[#b07a3c] relative"
+          initial={{ x: -40, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          <h3 className="text-2xl md:text-3xl font-extrabold text-[#b07a3c] mb-4 tracking-tight drop-shadow">
+            Power Fixit Tapes Industries
+          </h3>
           <div className="flex items-start gap-3 mb-2">
             <FaMapMarkerAlt className="text-[#b07a3c] text-xl mt-1" />
             <p className="text-[#1a2341] font-semibold leading-tight text-left">
@@ -66,22 +103,39 @@ export default function Contact() {
           </div>
           <div className="flex items-center gap-3 mb-1">
             <FaGlobe className="text-[#b07a3c] text-lg" />
-            <a href="https://www.powerfixittapes.in" target="_blank" rel="noopener noreferrer" className="text-[#b07a3c] underline hover:text-[#a86b2d] text-center block">www.powerfixittapes.in</a>
+            <a
+              href="https://www.powerfixittapes.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#b07a3c] underline hover:text-[#a86b2d] text-center block"
+            >
+              www.powerfixittapes.in
+            </a>
           </div>
-          <p className="mt-6 italic text-lg text-[#1a2341] font-semibold text-center">Adhesives For Professionals Who Demand Excellence.</p>
-        </div>
+          <p className="mt-6 italic text-lg text-[#1a2341] font-semibold text-center">
+            Adhesives For Professionals Who Demand Excellence.
+          </p>
+        </motion.div>
         {/* Divider for desktop */}
-        <div className="hidden md:block w-px bg-[#b07a3c]" />
+        <div className="hidden md:block w-px bg-[#b07a3c]/30" />
         {/* Contact Form */}
-        <div className="flex-1 flex flex-col justify-center p-8 md:p-10 bg-white">
-          <p className="mb-4 text-lg text-[#1a2341] text-center md:text-left">Ready to order or have questions? Our team is here to help!</p>
-          <form className="max-w-xl w-full mx-auto space-y-4" onSubmit={handleSubmit} noValidate>
+        <motion.div
+          className="flex-1 flex flex-col justify-center p-8 md:p-12 bg-white/80"
+          initial={{ x: 40, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          <p className="mb-4 text-lg text-[#1a2341] text-center md:text-left">
+            Ready to order or have questions? Our team is here to help!
+          </p>
+          <form className="max-w-xl w-full mx-auto space-y-5" onSubmit={handleSubmit} noValidate>
             <div>
               <input
                 type="text"
                 name="name"
                 placeholder="Name"
-                className={`w-full p-3 border-2 rounded focus:outline-none ${errors.name ? 'border-red-400' : 'border-[#b07a3c]'}`}
+                className={`w-full p-3 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b07a3c] bg-white/90 shadow-sm ${errors.name ? 'border-red-400' : 'border-[#b07a3c]'}`}
                 value={form.name}
                 onChange={handleChange}
                 required
@@ -93,7 +147,7 @@ export default function Contact() {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className={`w-full p-3 border-2 rounded focus:outline-none ${errors.email ? 'border-red-400' : 'border-[#b07a3c]'}`}
+                className={`w-full p-3 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b07a3c] bg-white/90 shadow-sm ${errors.email ? 'border-red-400' : 'border-[#b07a3c]'}`}
                 value={form.email}
                 onChange={handleChange}
                 required
@@ -104,7 +158,7 @@ export default function Contact() {
               type="tel"
               name="phone"
               placeholder="Phone (optional)"
-              className="w-full p-3 border-2 border-[#b07a3c] rounded focus:outline-none"
+              className="w-full p-3 border-2 border-[#b07a3c] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b07a3c] bg-white/90 shadow-sm"
               value={form.phone}
               onChange={handleChange}
             />
@@ -113,7 +167,7 @@ export default function Contact() {
                 name="message"
                 placeholder="Message"
                 rows="5"
-                className={`w-full p-3 border-2 rounded focus:outline-none ${errors.message ? 'border-red-400' : 'border-[#b07a3c]'}`}
+                className={`w-full p-3 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b07a3c] bg-white/90 shadow-sm ${errors.message ? 'border-red-400' : 'border-[#b07a3c]'}`}
                 value={form.message}
                 onChange={handleChange}
                 required
@@ -122,15 +176,24 @@ export default function Contact() {
             </div>
             <motion.button
               type="submit"
-              className="bg-[#b07a3c] text-white px-6 py-3 rounded hover:bg-[#a86b2d] transition w-full font-bold text-lg"
-              whileHover={{ scale: 1.03 }}
+              className="bg-[#b07a3c] text-white px-8 py-3 rounded-full hover:bg-[#a86b2d] transition w-full font-bold text-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#b07a3c]"
+              whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
               Send Message
             </motion.button>
-            {submitted && <div className="text-green-600 text-center font-semibold mt-2">Thank you! Your message has been sent.</div>}
+            {submitted && (
+              <motion.div
+                className="text-green-600 text-center font-semibold mt-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                Thank you! Your message has been sent.
+              </motion.div>
+            )}
           </form>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

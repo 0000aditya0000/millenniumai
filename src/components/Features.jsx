@@ -55,8 +55,8 @@ export default function Features() {
             <motion.div
               key={i}
               className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left bg-white/80 rounded-2xl p-8 shadow-lg border border-[#f3e7d2] hover:shadow-2xl transition-transform duration-300 gap-6 md:gap-8"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0}}
+              whileInView={{ opacity: 1}}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               whileHover={{ scale: 1.03 }}

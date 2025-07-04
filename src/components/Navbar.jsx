@@ -3,7 +3,7 @@ import { FaTape } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 const navLinks = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "home" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Testimonials", href: "#testimonials" },

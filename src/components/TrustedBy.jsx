@@ -11,7 +11,7 @@ const trusted = [
 
 export default function TrustedBy() {
   return (
-    <section className="w-full bg-white py-8 border-t border-b border-gray-200">
+    <section className="w-full relative bg-transparent py-8 border-t border-b border-gray-200">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         <div className="uppercase text-xs tracking-widest text-gray-400 mb-2">Trusted By</div>
         <div className="text-lg font-semibold text-[#b07a3c] mb-4 text-center">Leading brands across industries trust our tapes for reliability and performance.</div>

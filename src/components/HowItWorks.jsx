@@ -17,8 +17,8 @@ const steps = [
               <motion.div
                 key={i}
                 className="flex flex-col items-center text-center bg-white rounded-xl p-6 shadow-md border border-[#e5d3b3] hover:shadow-xl transition-transform duration-300 cursor-pointer"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
                 whileHover={{ scale: 1.07 }}

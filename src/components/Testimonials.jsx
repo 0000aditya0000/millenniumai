@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 const testimonials = [
   {
     quote: "The best tape we've ever used for our packaging! Super strong and always reliable.",
@@ -24,6 +24,16 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
+  const timeoutRef = useRef();
+
+  // Auto-rotate every 4 seconds
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setIndex((i) => (i + 1) % testimonials.length);
+    }, 4000);
+    return () => clearTimeout(timeoutRef.current);
+  }, [index]);
+
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
   const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
 
@@ -46,8 +56,9 @@ export default function Testimonials() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.7 }}
                 className="bg-white p-8 rounded-2xl shadow-xl border-4 border-[#b07a3c] flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 w-full"
+                aria-live="polite"
               >
                 <img src={testimonials[index].avatar} alt={testimonials[index].name} className="w-20 h-20 rounded-full border-2 border-[#b07a3c] mb-4 md:mb-0 shadow object-cover" />
                 <div className="flex-1 text-left">
