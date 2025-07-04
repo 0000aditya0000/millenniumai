@@ -87,7 +87,7 @@ export default function Navbar() {
         </div>
         {/* CTA button right */}
         <div className="hidden md:flex">
-          <a href="#contact" className="ml-6 bg-[#b07a3c] hover:bg-[#a86b2d] text-white font-bold px-6 py-2 rounded-full shadow transition text-lg">Get a Quote</a>
+          <a href="#contact" onClick={e => handleNavClick(e, '#contact')} className="ml-6 bg-[#b07a3c] hover:bg-[#a86b2d] text-white font-bold px-6 py-2 rounded-full shadow transition text-lg">Get a Quote</a>
         </div>
         {/* Hamburger for mobile */}
         <button className="md:hidden text-[#b07a3c] text-3xl ml-auto" onClick={() => setOpen(!open)} aria-label="Toggle menu">
@@ -113,7 +113,7 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href="#contact" className="bg-[#b07a3c] hover:bg-[#a86b2d] text-white font-bold px-6 py-2 rounded-full shadow transition text-lg mt-2">Get a Quote</a>
+          <a href="#contact" onClick={e => handleNavClick(e, '#contact')} className="bg-[#b07a3c] hover:bg-[#a86b2d] text-white font-bold px-6 py-2 rounded-full shadow transition text-lg mt-2">Get a Quote</a>
         </div>
       )}
     </nav>
