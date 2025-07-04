@@ -8,14 +8,17 @@ const owners = [
     name: "AK Saxena",
     role: "Founder & CEO",
     image: owner,
-    bio: `The concern runs since 2009. His inexhaustible perseverance, never say die spirit, clinging to human values are amazing. He is open and above board in all his dealing. He worked hard and honestly to rise to heights. He never compromises with values and quality. Contact no :- 9458201918 9997028787`,
+    bio: `The concern runs since 2009. His inexhaustible perseverance, never say die spirit, clinging to human values are amazing. He is open and above board in all his dealing. He worked hard and honestly to rise to heights. He never compromises with values and quality. `,
+    contact : "9458201918, 9997028787",
   },
   {
     name: "Akalavaya Saxena",
     role: "Co-Founder & Operations Head",
     image: owner2,
-    bio: `The concern runs since 2009. His inexhaustible perseverance, never say die spirit, clinging to human values are amazing. He is open and above board in all his dealing. He worked hard and honestly to rise to heights. He never compromises with values and quality. Contact no :- 9458201918 9997028787 `,
+    bio: `The concern runs since 2009. His inexhaustible perseverance, never say die spirit, clinging to human values are amazing. He is open and above board in all his dealing. He worked hard and honestly to rise to heights. He never compromises with values and quality. `,
+    contact : "9458201918, 9997028787",
   },
+
 ];
 
 const AboutOwner = () => {
@@ -53,6 +56,9 @@ const AboutOwner = () => {
             <p className="text-[#4b4b4b] text-center text-sm px-4">
               {owner.bio}
             </p>
+            <div className="text-[#b07a3c] font-semibold mt-4">
+              Contact: {owner.contact}
+            </div>
           </motion.div>
         ))}
       </div>
