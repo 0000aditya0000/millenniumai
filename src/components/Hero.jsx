@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <section className="relative w-full min-h-[100vh] flex items-center justify-center px-0 overflow-hidden">
       {/* Swiper Background */}
-      <div className="absolute inset-0 w-full h-screen z-0 cursor-pointer">
+      <div className="absolute top-0 inset-0 w-full h-screen z-0 cursor-pointer">
         <Swiper
           modules={[Autoplay, Pagination, EffectCoverflow]}
           effect="coverflow"
@@ -62,7 +62,7 @@ export default function Hero() {
                 {/* Text Content */}
                 <div className="relative z-20 flex flex-col items-center justify-center h-full min-h-[70vh] px-4">
                   <motion.h1
-                    className="text-3xl md:text-5xl font-extrabold mb-4 text-white text-center drop-shadow-lg"
+                    className="text-3xl md:text-5xl font-semibold font-roboto-slab mb-4 text-white text-center drop-shadow-lg"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.7 }}

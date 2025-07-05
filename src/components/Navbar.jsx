@@ -61,17 +61,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`backdrop-blur-xl bg-white sticky top-0 z-50 border-b border-[#b07a3c]/20 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 background-blur ${scrolled ? 'shadow-lg' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo left */}
         <div className="flex items-center gap-2">
-          {/* <FaTape className="text-3xl text-[#b07a3c] drop-shadow" /> */}
           <img src={logo} alt="Power Fixit" className="w-10 h-10" />
           <span className="font-extrabold text-2xl text-[#1a2341] tracking-wide">Power Fixit</span>
         </div>
         {/* Nav links center */}
         <div className="hidden md:flex flex-1 justify-center">
-          <div className="flex gap-6 bg-white/70 rounded-full px-8 py-2 shadow-md">
+          <div className="flex gap-6 bg-transparent rounded-full px-8 py-2 shadow-md">
             {navLinks.map((link) => (
               <a
                 key={link.label}
