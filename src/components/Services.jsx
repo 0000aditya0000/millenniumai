@@ -15,6 +15,7 @@ import {
   FaRoad,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { title } from "motion/react-client";
 
 const generalTapes = [
   {
@@ -77,6 +78,36 @@ const generalTapes = [
       "Multiple color options",
     ],
   },
+  {
+    title:"Wire Harnessing Tapes",
+    desc: "Insulate and protect wires",
+    icon: <FaCogs className="text-6xl text-black" />,
+    details: [
+      "High-temperature resistance",
+      "Flexible and stretchable",
+      "Ideal for automotive and electronics",
+    ],
+  },
+  {
+    title: "White Goods Tapes",
+    desc: "Durable and moisture-resistant",
+    icon: <FaBolt className="text-6xl text-black" />,
+    details: [
+      "Used in appliances and electronics",
+      "Resistant to heat and moisture",
+      "Provides long-lasting adhesion",
+    ],
+  },
+  {
+    title: "Surface Protection Tapes",
+    desc: "Protect surfaces from scratches and damage",
+    icon: <FaShieldAlt className="text-6xl text-black" />,
+    details: [
+      "Ideal for glass, metal, and plastic surfaces",
+      "Easy to apply and remove", 
+      "Long-lasting protection",
+    ],
+  }
 ];
 
 const specialtyTapes = [
@@ -120,6 +151,7 @@ const specialtyTapes = [
       "Durable and easy to apply",
     ],
   },
+  
 ];
 
 

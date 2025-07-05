@@ -16,19 +16,18 @@ function App() {
   return (
     <div className="font-sans">
       <Navbar />
-      <div id='home'>
+      <div id="home">
         <Hero />
-        
       </div>
-          <TrustedBy />
+      <TrustedBy />
       <div id="services">
-        <Services/>
+        <Services />
       </div>
       <div id="about">
         <Features />
       </div>
-      <HowItWorks/>
-            <AboutOwner />
+      <HowItWorks />
+      <AboutOwner />
 
       <CallToAction />
       <div id="testimonials">
