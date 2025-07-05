@@ -1,0 +1,33 @@
+{
+  "default_branch": "master",
+  "branches": [
+    "blog",
+    "latestcode",
+    "main",
+    "master",
+    "newupdate",
+    "tape",
+    "update-services-section",
+    "updatemain"
+  ],
+  "parent": {
+    "blog": "master",
+    "latestcode": "master",
+    "main": "master",
+    "master": null,
+    "newupdate": "master",
+    "tape": "master",
+    "update-services-section": "master",
+    "updatemain": "master"
+  },
+  "order": [
+    "master",
+    "blog",
+    "latestcode",
+    "main",
+    "newupdate",
+    "tape",
+    "update-services-section",
+    "updatemain"
+  ]
+}

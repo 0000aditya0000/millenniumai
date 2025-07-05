@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -24,6 +24,14 @@ import {
   FaBolt,
   FaCogs,
 } from "react-icons/fa";
+
+// Function to convert service title to URL-friendly slug
+const createSlug = (title) => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+};
 
 const aiMlDropdowns = [
   {
@@ -388,10 +396,10 @@ const Services = () => {
 
                         {/* Learn More Button */}
                         <div className="mt-auto">
-                          <button className="group/btn w-full flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg sm:rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300">
+                          <Link to={`/${createSlug(service.title)}`}  className="group/btn w-full flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg sm:rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300">
                             <span className="text-white/80 group-hover/btn:text-white transition-colors duration-300 text-sm sm:text-base">Learn More</span>
                             <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
