@@ -169,7 +169,7 @@ const BlogPost = () => {
     {
       id: 4,
       title:
-        "Core Development Services: From AI/ML to Full-Stack Web Solutions",
+        "Core Development",
       excerpt:
         "Comprehensive overview of MillenniumAI's core services including AI/ML development, MERN stack web development, mobile apps, backend engineering, and UI/UX design.",
       author: "AI Research Team",
@@ -287,6 +287,7 @@ const BlogPost = () => {
   ];
 
   const post = blogPosts.find((post) => post.id === parseInt(id));
+  console.log(post)
 
   if (!post) {
     return (
@@ -457,7 +458,7 @@ const BlogPost = () => {
                 .map((relatedPost) => (
                   <Link
                     key={relatedPost.id}
-                    to={`/blog/${relatedPost.id}/${relatedPost.title}`}
+                    to={`/${relatedPost.id}/${relatedPost.title}`}
                     className="group relative"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl sm:rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
