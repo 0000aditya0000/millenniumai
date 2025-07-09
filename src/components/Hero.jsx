@@ -58,7 +58,7 @@ export default function Hero() {
                   }}
                 />
                 {/* Overlay for better text contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2341]/80 via-[#1a2341]/30 to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1a2341]/80 via-[#1a2341]/30 to-transparent z-10 pointer-events-none top-0" />
                 {/* Text Content */}
                 <div className="relative z-20 flex flex-col items-center justify-center h-full min-h-[70vh] px-4">
                   <motion.h1

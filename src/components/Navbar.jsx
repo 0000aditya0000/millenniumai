@@ -61,12 +61,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 background-blur ${scrolled ? 'shadow-lg' : ''}`}>
+    <nav className={
+      `absolute top-0 left-0 right-0 z-10 bg-transparent bg-opacity-90  transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`
+    }>
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo left */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="Power Fixit" className="w-10 h-10" />
-          <span className="font-extrabold text-2xl text-[#1a2341] tracking-wide">Power Fixit</span>
+          <img src={logo} alt="Power Fixit" className="w-16 h-10 object-cover" />
+          <span className="font-extrabold text-3xl text-white tracking-wide">Power Fixit</span>
         </div>
         {/* Nav links center */}
         <div className="hidden md:flex flex-1 justify-center">
@@ -76,7 +78,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={e => handleNavClick(e, link.href)}
-                className={`relative px-2 py-1 group text-lg font-medium transition ${activeId === link.href ? 'text-[#b07a3c]' : 'text-[#1a2341] hover:text-[#b07a3c]'}`}
+                className={`relative px-2 py-1 group text-lg font-medium transition ${activeId === link.href ? 'text-[#b07a3c]' : 'text-white hover:text-[#b07a3c]'}`}
               >
                 {link.label}
                 <span className={`absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-[#b07a3c] to-[#a86b2d] rounded-full transition-all duration-300 ${activeId === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
