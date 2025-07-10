@@ -158,71 +158,27 @@ const specialtyTapes = [
 export default function Services() {
   return (
     <section className="w-full bg-white py-20 px-4 relative overflow-hidden">
-      {/* Subtle SVG grid and props background */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-        <svg
-          width="100%"
-          height="100%"
-          className="w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="services-grid"
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
-              <rect x="0" y="0" width="40" height="40" fill="none" />
-              <path
-                d="M 40 0 L 0 0 0 40"
-                fill="none"
-                stroke="#e5e7eb"
-                strokeWidth="1"
-              />
-            </pattern>
-          </defs>
-          {/* Grid */}
-          <rect width="100%" height="100%" fill="url(#services-grid)" />
-          {/* Circles */}
-          <motion.circle
-            cx="15%"
-            cy="20%"
-            r="32"
-            fill="#f3e7d2"
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="animate-pulse"
-            fillOpacity="1"
-          />
-
-          <motion.circle
-            cx="88%"
-            cy="70%"
-            r="24"
-            fill="#b07a3c"
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className="animate-pulse"
-            fillOpacity="0.6"
-          />
-
-          <motion.circle
-            cx="95%"
-            cy="30%"
-            r="18"
-            fill="#b07a3c"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
-            className="float-slow"
-            fillOpacity="1"
-          />
-          
-        </svg>
-      </div>
+      {/* Subtle animated background: gentle wave and floating elements */}
+ 
+      {/* Floating circles/icons */}
+      <motion.div
+        className="absolute top-20 left-10 w-10 h-10 rounded-full bg-[#b07a3c] opacity-10 z-0"
+        animate={{ y: [0, 30, 0], x: [0, 10, 0] }}
+        transition={{ duration: 10, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        style={{ filter: 'blur(2px)' }}
+      />
+      <motion.div
+        className="absolute top-1/3 right-16 w-8 h-8 rounded-full bg-[#b07a3c] opacity-10 z-0"
+        animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
+        transition={{ duration: 14, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        style={{ filter: 'blur(2px)' }}
+      />
+      <motion.div
+        className="absolute bottom-40 left-1/2 w-12 h-12 rounded-full bg-[#b07a3c] opacity-10 z-0"
+        animate={{ y: [0, 18, 0], x: [0, 12, 0] }}
+        transition={{ duration: 18, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        style={{ filter: 'blur(2px)', transform: 'translateX(-50%)' }}
+      />
       <div className="relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-bold text-center text-[#1a2341] mb-6 tracking-tight">
@@ -233,42 +189,46 @@ export default function Services() {
             for performance across industries. From packaging to insulation, we
             have the perfect tape for your needs.
           </p>
-          <div className="mb-12">
+          <div className="mb-12 relative">
             <h3 className="text-2xl font-bold text-black mb-6 tracking-tight">
               General Tapes
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {/* Horizontal line behind cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
               {generalTapes.map((t, i) => (
-                <motion.div
-                  key={i}
-                  className="flex flex-col items-center bg-white rounded-xl p-6 shadow-md border border-[#f3e7d2] hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer text-center overflow-hidden"
-                  initial={{ opacity: 0,}}
-                  whileInView={{ opacity: 1,}}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: i * 0.08 }}
-                  whileHover={{ scale: 1.04 }}
-                >
-                  <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-[#f3e7d2] to-[#e5d3b3]">
-                    <img
-                      src={t.image}
-                      alt={t.title}
-                      className="w-full h-full object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-[#b07a3c] bg-opacity-20 flex items-center justify-center">
-                      {t.icon}
+                <div className="relative flex flex-col items-center">
+                  {/* Vertical connector from card to horizontal line */}
+                  <motion.div
+                    key={i}
+                    className="flex flex-col items-center bg-white rounded-xl p-6 shadow-md border border-[#f3e7d2] hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer text-center overflow-hidden relative z-10"
+                    initial={{ opacity: 0,}}
+                    whileInView={{ opacity: 1,}}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: i * 0.08 }}
+                    whileHover={{ scale: 1.04 }}
+                  >
+                    <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-[#f3e7d2] to-[#e5d3b3]">
+                      <img
+                        src={t.image}
+                        alt={t.title}
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-[#b07a3c] bg-opacity-20 flex items-center justify-center">
+                        {t.icon}
+                      </div>
                     </div>
-                  </div>
-                  <div className="font-bold text-lg text-[#1a2341] mt-3 mb-1 tracking-tight">
-                    {t.title}
-                  </div>
-                  <div className="text-[#4b4b4b] text-md mb-2 leading-relaxed">
-                    {t.desc}
-                  </div>
-                  <ul className="text-md text-left text-[#1a2341] mb-2 list-disc list-inside">
-                    {t.details &&
-                      t.details.map((d, idx) => <li key={idx}>{d}</li>)}
-                  </ul>
-                </motion.div>
+                    <div className="font-bold text-lg text-[#1a2341] mt-3 mb-1 tracking-tight">
+                      {t.title}
+                    </div>
+                    <div className="text-[#4b4b4b] text-md mb-2 leading-relaxed">
+                      {t.desc}
+                    </div>
+                    <ul className="text-md text-left text-[#1a2341] mb-2 list-disc list-inside">
+                      {t.details &&
+                        t.details.map((d, idx) => <li key={idx}>{d}</li>)}
+                    </ul>
+                  </motion.div>
+                </div>
               ))}
             </div>
           </div>

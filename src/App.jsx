@@ -8,14 +8,13 @@ import TrustedBy from "./components/TrustedBy";
 import HowItWorks from "./components/HowItWorks";
 import Features from "./components/Features";
 import CallToAction from "./components/CallToAction";
-
 import AboutOwner from "./components/AboutOwner";
-// import SpecialtyTapes from "./components/SpecialtyTapes";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ServicesPage from "./pages/ServicesPage";
 
-function App() {
+function MainHome() {
   return (
-    <div className="font-sans">
-      <Navbar />
+    <>
       <div id="home">
         <Hero />
       </div>
@@ -28,13 +27,27 @@ function App() {
       </div>
       <HowItWorks />
       <AboutOwner />
-
       <CallToAction />
       <div id="testimonials">
         <Testimonials />
       </div>
       <Contact />
       <Footer />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <div className="font-sans">
+      <BrowserRouter>
+      <Navbar/>
+        <Routes>
+          <Route path="/" element={<MainHome />} />
+          <Route path="/services" element={<ServicesPage />} />
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
     </div>
   );
 }
