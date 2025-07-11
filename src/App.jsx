@@ -32,7 +32,6 @@ function MainHome() {
         <Testimonials />
       </div>
       <Contact />
-      <Footer />
     </>
   );
 }

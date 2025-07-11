@@ -158,8 +158,52 @@ const specialtyTapes = [
 export default function Services() {
   return (
     <section className="w-full bg-white py-20 px-4 relative overflow-hidden">
-      {/* Subtle animated background: gentle wave and floating elements */}
- 
+
+      {/* Animated SVG wave at the top */}
+      <div className="absolute top-0 left-0 w-full z-0 opacity-20 pointer-events-none select-none">
+        <svg width="100%" height="80" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#b07a3c" />
+        </svg>
+      </div>
+
+      {/* Extra floating tape fragments */}
+      <motion.div
+        className="absolute top-32 left-1/4 w-16 h-3 rounded bg-[#b07a3c] opacity-10 z-0 rotate-12"
+        animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
+        transition={{ duration: 16, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        style={{ filter: 'blur(1.5px)' }}
+      />
+      <motion.div
+        className="absolute bottom-24 right-1/3 w-24 h-4 rounded bg-[#b07a3c] opacity-10 z-0 -rotate-6"
+        animate={{ y: [0, -25, 0], x: [0, -18, 0] }}
+        transition={{ duration: 20, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        style={{ filter: 'blur(2px)' }}
+      />
+      <motion.div
+        className="absolute top-1/2 left-10 w-10 h-2 rounded bg-[#b07a3c] opacity-10 z-0 rotate-3"
+        animate={{ y: [0, 15, 0], x: [0, 8, 0] }}
+        transition={{ duration: 13, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        style={{ filter: 'blur(1px)' }}
+      />
+
+      {/* Tape roll SVG animation (bottom right) */}
+      <div className="absolute bottom-8 right-8 z-0 opacity-20 pointer-events-none select-none" style={{filter: 'blur(1px)'}}>
+        <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Tape roll */}
+          <circle cx="50" cy="60" r="32" fill="#f3e7d2" stroke="#b07a3c" strokeWidth="6" />
+          <circle cx="50" cy="60" r="16" fill="#fff" stroke="#b07a3c" strokeWidth="3" />
+          {/* Tape strip (animated) */}
+          <g>
+            <motion.rect
+              x="82" y="56" width="60" height="8" rx="4"
+              fill="#b07a3c"
+              initial={{ x: 82 }}
+              animate={{ x: [82, 100, 82] }}
+              transition={{ duration: 3, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+            />
+          </g>
+        </svg>
+      </div>
       {/* Floating circles/icons */}
       <motion.div
         className="absolute top-20 left-10 w-10 h-10 rounded-full bg-[#b07a3c] opacity-10 z-0"
@@ -200,7 +244,7 @@ export default function Services() {
                   {/* Vertical connector from card to horizontal line */}
                   <motion.div
                     key={i}
-                    className="flex flex-col items-center bg-white rounded-xl p-6 shadow-md border border-[#f3e7d2] hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer text-center overflow-hidden relative z-10"
+                    className="flex flex-col items-center bg-white rounded-xl p-6 shadow-md border border-[#f3e7d2] hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer text-center overflow-hidden relative z-10 min-h-[410px] h-full w-full"
                     initial={{ opacity: 0,}}
                     whileInView={{ opacity: 1,}}
                     viewport={{ once: true, amount: 0.2 }}
@@ -240,7 +284,7 @@ export default function Services() {
               {specialtyTapes.map((t, i) => (
                 <motion.div
                   key={i}
-                  className="flex flex-col items-center bg-[#f3e7d2] rounded-xl p-6 shadow-md border border-[#e5d3b3] hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer text-center overflow-hidden"
+                  className="flex flex-col items-center bg-[#f3e7d2] rounded-xl p-6 shadow-md border border-[#e5d3b3] hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer text-center overflow-hidden min-h-[340px] h-full w-full"
                   initial={{ opacity: 0,  }}
                   whileInView={{ opacity: 1, }}
                   viewport={{ once: true, amount: 0.2 }}

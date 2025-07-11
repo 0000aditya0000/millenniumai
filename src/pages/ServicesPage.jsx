@@ -57,19 +57,72 @@ const stats = [
   { label: 'Industries Covered', value: 12 },
 ];
 
+const tapeRollSVG = (
+  <div className="absolute bottom-8 right-8 z-0 opacity-20 pointer-events-none select-none" style={{filter: 'blur(1px)'}}>
+    <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="60" r="32" fill="#f3e7d2" stroke="#b07a3c" strokeWidth="6" />
+      <circle cx="50" cy="60" r="16" fill="#fff" stroke="#b07a3c" strokeWidth="3" />
+      <motion.rect
+        x="82" y="56" width="60" height="8" rx="4"
+        fill="#b07a3c"
+        initial={{ x: 82 }}
+        animate={{ x: [82, 100, 82] }}
+        transition={{ duration: 3, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+      />
+    </svg>
+  </div>
+);
+
 const CustomCTA = () => (
-  <section className="w-full bg-[#1a2341] py-16 px-4 flex flex-col items-center justify-center text-center rounded-3xl shadow-lg my-16">
+  <motion.section
+    className="w-full bg-[#1a2341] py-16 px-4 flex flex-col items-center justify-center text-center rounded-3xl shadow-lg my-16"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.7 }}
+  >
     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">Ready to Upgrade Your Packaging?</h2>
     <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
       Get in touch for a free consultation or to request a custom tape sample. Our experts are here to help you find the perfect solution for your business.
     </p>
-    <a
+    <motion.a
       href="/contact"
-      className="inline-block bg-[#b07a3c] hover:bg-[#a86b2d] text-white font-bold px-10 py-4 rounded-full shadow-lg text-lg transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-[#b07a3c] hover:scale-105"
+      className="inline-block bg-[#b07a3c] hover:bg-[#a86b2d] text-white font-bold px-10 py-4 rounded-full shadow-lg text-lg transition-all duration-200 text-center focus:outline-none focus:ring-2 focus:ring-[#b07a3c] hover:scale-105 relative overflow-hidden"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      onClick={e => {
+        const btn = e.currentTarget;
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = e.nativeEvent.offsetX + 'px';
+        ripple.style.top = e.nativeEvent.offsetY + 'px';
+        btn.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      }}
+      style={{ position: 'relative' }}
     >
       Request a Free Sample
-    </a>
-  </section>
+      <style>{`
+        .ripple {
+          position: absolute;
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s linear;
+          background-color: rgba(255,255,255,0.5);
+          pointer-events: none;
+          width: 120px;
+          height: 120px;
+          z-index: 10;
+        }
+        @keyframes ripple {
+          to {
+            transform: scale(2.5);
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </motion.a>
+  </motion.section>
 );
 
 function AnimatedStat({ value, label }) {
@@ -121,26 +174,64 @@ const ServicesPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full py-20 px-4 flex flex-col items-center justify-center bg-[#b07a3ca5] overflow-hidden">
-        <div className="max-w-3xl mx-auto text-center z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#1a2341] mb-6 tracking-tight drop-shadow">Premium Tape Solutions</h1>
+      <motion.section
+        className="relative w-full py-20 px-4 pt-40 flex flex-col items-center justify-center bg-[#b07a3ca5] overflow-hidden"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="max-w-3xl mx-auto text-center z-10 relative">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-[#1a2341] mb-6 tracking-tight drop-shadow-lg">
+            Premium Tape Solutions
+          </h1>
           <p className="text-lg md:text-xl text-[#4b4b4b] mb-8 max-w-2xl mx-auto leading-relaxed">
-            Discover our full range of general and specialty tapes, engineered for reliability, performance, and your unique business needs. From packaging to insulation, we have the perfect tape for you.
+            Discover our full range of <span className="font-semibold text-[#b07a3c]">general</span> and <span className="font-semibold text-[#b07a3c]">specialty tapes</span>, engineered for <span className="font-semibold">reliability</span>, <span className="font-semibold">performance</span>, and your unique business needs. From <span className="font-semibold text-[#b07a3c]">packaging</span> to <span className="font-semibold text-[#b07a3c]">insulation</span>, we have the perfect tape for you.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <span className="inline-flex items-center px-4 py-2 bg-[#f3e7d2] text-[#b07a3c] font-semibold rounded-full shadow-sm text-base">
+              🏆 Industry Leading Quality
+            </span>
+            <span className="inline-flex items-center px-4 py-2 bg-[#f3e7d2] text-[#b07a3c] font-semibold rounded-full shadow-sm text-base">
+              🚚 Fast Delivery
+            </span>
+            <span className="inline-flex items-center px-4 py-2 bg-[#f3e7d2] text-[#b07a3c] font-semibold rounded-full shadow-sm text-base">
+              🛡️ Custom Solutions
+            </span>
+          </div>
+          <a
+            href="#services"
+            className="inline-block mt-2 px-8 py-3 bg-[#b07a3c] text-white font-bold rounded-full shadow-lg hover:bg-[#a06a2c] transition-colors duration-200"
+          >
+            Explore Our Tapes
+          </a>
         </div>
         {/* Decorative SVG blob */}
         <svg className="absolute left-0 top-0 w-60 h-60 opacity-20 blur-2xl -z-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <path fill="#b07a3c" d="M44.8,-67.2C57.2,-59.2,65.2,-44.8,70.2,-29.7C75.2,-14.7,77.2,1,72.2,14.7C67.2,28.3,55.2,39.8,42.2,48.2C29.2,56.7,14.6,62.1,-0.7,62.9C-16,63.7,-32,59.9,-44.2,51.1C-56.4,42.3,-64.8,28.5,-68.2,13.6C-71.6,-1.3,-70,-17.2,-62.7,-29.7C-55.4,-42.2,-42.4,-51.3,-28.2,-58.2C-14,-65.1,1.4,-69.8,16.7,-70.2C32,-70.6,44.8,-67.2,44.8,-67.2Z" transform="translate(100 100)" />
         </svg>
-      </section>
+        {tapeRollSVG}
+      </motion.section>
       {/* Stats Section */}
-      <section className="max-w-5xl mx-auto py-12 px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <motion.section
+        className="max-w-5xl mx-auto py-12 px-4 grid grid-cols-2 md:grid-cols-4 gap-8"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7 }}
+      >
         {stats.map((stat, i) => (
           <AnimatedStat key={i} value={stat.value} label={stat.label} />
         ))}
-      </section>
+      </motion.section>
       {/* Services Swiper */}
-      <section className="max-w-7xl mx-auto py-16 px-4">
+      <motion.section
+        className="max-w-7xl mx-auto py-16 px-4"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7 }}
+      >
         <Swiper
           modules={[Navigation, Pagination, A11y]}
           spaceBetween={32}
@@ -164,16 +255,37 @@ const ServicesPage = () => {
                 </div>
                 <div className="font-bold text-xl text-[#1a2341] mb-2 tracking-tight">{s.title}</div>
                 <div className="text-[#4b4b4b] text-base mb-4 leading-relaxed">{s.desc}</div>
-                <ul className="text-left mx-auto text-[#1a2341] text-sm list-disc list-inside max-w-xs">
+                <motion.ul
+                  className="text-left mx-auto text-[#1a2341] text-sm list-disc list-inside max-w-xs"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.15,
+                      },
+                    },
+                  }}
+                >
                   {s.features && s.features.map((f, idx) => (
-                    <li key={idx}>{f}</li>
+                    <motion.li
+                      key={idx}
+                      variants={{
+                        hidden: { opacity: 0, x: 20 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+                      }}
+                    >
+                      {f}
+                    </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </section>
+      </motion.section>
       {/* Custom CTA Section */}
       <CustomCTA />
     </div>
