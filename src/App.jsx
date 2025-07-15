@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import ScrolltoTop from "./components/ScrolltoTop";
+import LearnMoreService from "./pages/LearnMoreService";
 
 
 function App() {
@@ -23,9 +24,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/:title" element={<LearnMoreService/>}/>
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:id/:title" element={<BlogPost />} />
+              <Route path="/:id/:title" element={<BlogPost />} />
             </Routes>
         </main>
         <Footer />
