@@ -5,17 +5,17 @@ import owner2 from "../assets/owner2.jpeg";
 
 const owners = [
   {
-    name: "AK Saxena",
+    name: "A K Saxena",
     role: "Founder & CEO",
     image: owner,
-    bio: `The concern runs since 2009. His inexhaustible perseverance, never say die spirit, clinging to human values are amazing. He is open and above board in all his dealing. He worked hard and honestly to rise to heights. He never compromises with values and quality. `,
+    bio: `With over 17 years of industry experience, A K Saxena has been the driving force behind the company’s growth and innovation since its inception in 2009. His strategic vision and unwavering commitment to excellence have positioned the company as a trusted provider of premium adhesive solutions. A believer in values and quality, he leads with integrity and inspires the team to deliver beyond expectations.`,
     contact : "9997028787",
   },
   {
     name: "Akalavaya Saxena",
     role: "Co-Founder & Operations Head",
     image: owner2,
-    bio: `The concern runs since 2009. His inexhaustible perseverance, never say die spirit, clinging to human values are amazing. He is open and above board in all his dealing. He worked hard and honestly to rise to heights. He never compromises with values and quality. `,
+    bio: `As the Co-Founder and Operations Head, Akalavaya Saxena brings energy and precision to the company’s operations. With a sharp focus on efficiency and client satisfaction, he ensures seamless delivery across all projects. His leadership fosters collaboration and drives the team towards achieving operational excellence and innovation.`,
     contact : "9458201918",
   },
 
