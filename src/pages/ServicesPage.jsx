@@ -182,7 +182,7 @@ const ServicesPage = () => {
         transition={{ duration: 0.7 }}
       >
         <div className="max-w-3xl mx-auto text-center z-10 relative">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-[#1a2341] mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
             Premium Tape Solutions
           </h1>
           <p className="text-lg md:text-xl text-[#4b4b4b] mb-8 max-w-2xl mx-auto leading-relaxed">
