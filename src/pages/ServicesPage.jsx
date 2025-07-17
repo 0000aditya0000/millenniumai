@@ -15,8 +15,9 @@ import {
   FaRoad,
 } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y } from "swiper/modules";
+import { Navigation, Pagination, Grid, A11y } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/grid";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { motion, useAnimation, useInView } from "framer-motion";
@@ -25,7 +26,7 @@ import { useMotionValue, animate } from "framer-motion";
 
 const services = [
   {
-    icon: <FaBoxOpen className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaBoxOpen className="text-6xl text-black mb-4 mt-4" />,
     title: "BOPP Packaging Tape",
     desc: "Strong, long-lasting, and perfect for carton sealing.",
     features: [
@@ -35,7 +36,7 @@ const services = [
     ],
   },
   {
-    icon: <FaCar className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaCar className="text-6xl text-black mb-4 mt-4" />,
     title: "Automotive Tapes",
     desc: "Heat and vibration resistant for trims and wire harnessing.",
     features: [
@@ -45,7 +46,7 @@ const services = [
     ],
   },
   {
-    icon: <FaEraser className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaEraser className="text-6xl text-black mb-4 mt-4" />,
     title: "Masking Tapes",
     desc: "Clean removal, high precision, and no residue.",
     features: [
@@ -55,7 +56,7 @@ const services = [
     ],
   },
   {
-    icon: <FaTags className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaTags className="text-6xl text-black mb-4 mt-4" />,
     title: "Custom Printed Tapes",
     desc: "Brand your packaging and enhance visibility.",
     features: [
@@ -65,7 +66,7 @@ const services = [
     ],
   },
   {
-    icon: <FaTruck className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaTruck className="text-6xl text-black mb-4 mt-4" />,
     title: "Logistics & Carton Sealing",
     desc: "Secure, reliable, and easy to use for all box types.",
     features: [
@@ -75,7 +76,7 @@ const services = [
     ],
   },
   {
-    icon: <FaPalette className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaPalette className="text-6xl text-black mb-4 mt-4" />,
     title: "Color & Specialty Tapes",
     desc: "Highlight, code, or decorate with style.",
     features: [
@@ -85,7 +86,7 @@ const services = [
     ],
   },
   {
-    icon: <FaCogs className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaCogs className="text-6xl text-black mb-4 mt-4" />,
     title: "Wire Harnessing Tapes",
     desc: "Insulate and protect wires in automotive and electronics.",
     features: [
@@ -95,7 +96,7 @@ const services = [
     ],
   },
   {
-    icon: <FaBolt className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaBolt className="text-6xl text-black mb-4 mt-4" />,
     title: "White Goods Tapes",
     desc: "Durable, moisture-resistant, and long-lasting adhesion.",
     features: [
@@ -105,7 +106,7 @@ const services = [
     ],
   },
   {
-    icon: <FaShieldAlt className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaShieldAlt className="text-6xl text-black mb-4 mt-4" />,
     title: "Surface Protection Tapes",
     desc: "Protect surfaces from scratches and damage.",
     features: [
@@ -115,7 +116,7 @@ const services = [
     ],
   },
   {
-    icon: <FaPlug className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaPlug className="text-6xl text-black mb-4 mt-4" />,
     title: "PVC Insulation Tape",
     desc: "Pressure-sensitive, flexible, and abrasion-resistant.",
     features: [
@@ -125,7 +126,7 @@ const services = [
     ],
   },
   {
-    icon: <FaPaintRoller className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaPaintRoller className="text-6xl text-black mb-4 mt-4" />,
     title: "Painter’s Masking Tape",
     desc: "Clean lines and easy removal for painting.",
     features: [
@@ -135,7 +136,7 @@ const services = [
     ],
   },
   {
-    icon: <FaGripLines className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaGripLines className="text-6xl text-black mb-4 mt-4" />,
     title: "Cross Filament Tape",
     desc: "Glass fiber-reinforced for heavy packing.",
     features: [
@@ -145,7 +146,7 @@ const services = [
     ],
   },
   {
-    icon: <FaRoad className="text-5xl text-[#b07a3c] mb-4" />,
+    icon: <FaRoad className="text-6xl text-black mb-4 mt-4" />,
     title: "Floor Marking Tape",
     desc: "Mark hazards, aisles, and directions in industrial spaces.",
     features: [
@@ -394,25 +395,31 @@ const ServicesPage = () => {
         transition={{ duration: 0.7 }}
       >
         <Swiper
-          modules={[Navigation, Pagination, A11y]}
+          modules={[Navigation, Pagination, Grid, A11y]}
           spaceBetween={32}
           slidesPerView={1}
+          grid={{
+            rows: 1,
+            fill: "row",
+          }}
           loop
           breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 4 },
+            640: { slidesPerView: 1, grid: { rows: 1 } },
+            768: { slidesPerView: 2, grid: { rows: 2 } },
+            1024: { slidesPerView: 3, grid: { rows: 2 } },
+            1280: { slidesPerView: 3, grid: { rows: 2 } },
           }}
           navigation
           pagination={{ clickable: true }}
-          className="!pb-12"
+          className="!pb-12 relative"
         >
           {services.map((s, i) => (
             <SwiperSlide key={i}>
               <div className="flex flex-col items-center bg-white rounded-2xl p-10 shadow-md border border-[#f3e7d2] hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer text-center h-[420px] group">
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {s.icon}
+                <div className="w-full bg-[#b07a3c] flex items-center justify-center">
+                  <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {s.icon}
+                  </div>
                 </div>
                 <div className="font-bold text-xl text-[#1a2341] mb-2 tracking-tight">
                   {s.title}
