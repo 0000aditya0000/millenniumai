@@ -6,7 +6,7 @@
   color: #000; /* Black text */
     }
 
-@theme{
+:root {
   --font-poppins: 'Poppins', sans-serif;
   --font-manrope: 'Manrope', sans-serif;
   --font-roboto-slab: 'Roboto Slab', serif;
@@ -27,4 +27,29 @@
 
 .float-slow {
   animation: float 4s ease-in-out infinite;
+}
+
+/* Slider Arrows Styling */
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #fff;
+  color: #b07a3c;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  top: 50%;            
+  transform: translateY(-50%);
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: #b07a3c;
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
 }
