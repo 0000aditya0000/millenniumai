@@ -245,9 +245,8 @@ const Home = () => {
 
         <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-6 relative z-10">
           <div
-            className={`max-w-6xl mx-auto transition-all duration-1000 ${
-              animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
+            className={`max-w-6xl mx-auto transition-all duration-1000 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
           >
             {/* Main Content */}
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
@@ -353,53 +352,50 @@ const Home = () => {
                   <div className="absolute inset-0 transition-all duration-1000 ease-out">
                     {/* Stack 1 - Changes with image */}
                     <div
-                      className={`absolute inset-0 rounded-3xl transform transition-all duration-1000 ease-out ${
-                        currentImageIndex === 0
-                          ? "bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-pink-500/30 rotate-6 scale-105"
-                          : currentImageIndex === 1
+                      className={`absolute inset-0 rounded-3xl transform transition-all duration-1000 ease-out ${currentImageIndex === 0
+                        ? "bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-pink-500/30 rotate-6 scale-105"
+                        : currentImageIndex === 1
                           ? "bg-gradient-to-br from-purple-500/30 via-pink-500/20 to-blue-500/30 -rotate-6 scale-110"
                           : currentImageIndex === 2
-                          ? "bg-gradient-to-br from-pink-500/30 via-blue-500/20 to-purple-500/30 rotate-12 scale-95"
-                          : currentImageIndex === 3
-                          ? "bg-gradient-to-br from-green-500/30 via-blue-500/20 to-purple-500/30 -rotate-12 scale-105"
-                          : currentImageIndex === 4
-                          ? "bg-gradient-to-br from-orange-500/30 via-pink-500/20 to-blue-500/30 rotate-8 scale-110"
-                          : "bg-gradient-to-br from-indigo-500/30 via-purple-500/20 to-pink-500/30 -rotate-8 scale-95"
-                      }`}
+                            ? "bg-gradient-to-br from-pink-500/30 via-blue-500/20 to-purple-500/30 rotate-12 scale-95"
+                            : currentImageIndex === 3
+                              ? "bg-gradient-to-br from-green-500/30 via-blue-500/20 to-purple-500/30 -rotate-12 scale-105"
+                              : currentImageIndex === 4
+                                ? "bg-gradient-to-br from-orange-500/30 via-pink-500/20 to-blue-500/30 rotate-8 scale-110"
+                                : "bg-gradient-to-br from-indigo-500/30 via-purple-500/20 to-pink-500/30 -rotate-8 scale-95"
+                        }`}
                     ></div>
 
                     {/* Stack 2 - Complementary animation */}
                     <div
-                      className={`absolute inset-0 rounded-3xl transform transition-all duration-1000 ease-out delay-200 ${
-                        currentImageIndex === 0
-                          ? "bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-blue-500/20 -rotate-8 scale-95"
-                          : currentImageIndex === 1
+                      className={`absolute inset-0 rounded-3xl transform transition-all duration-1000 ease-out delay-200 ${currentImageIndex === 0
+                        ? "bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-blue-500/20 -rotate-8 scale-95"
+                        : currentImageIndex === 1
                           ? "bg-gradient-to-br from-pink-500/20 via-blue-500/10 to-purple-500/20 rotate-8 scale-105"
                           : currentImageIndex === 2
-                          ? "bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-pink-500/20 -rotate-12 scale-110"
-                          : currentImageIndex === 3
-                          ? "bg-gradient-to-br from-purple-500/20 via-green-500/10 to-blue-500/20 rotate-6 scale-95"
-                          : currentImageIndex === 4
-                          ? "bg-gradient-to-br from-blue-500/20 via-orange-500/10 to-pink-500/20 -rotate-10 scale-105"
-                          : "bg-gradient-to-br from-pink-500/20 via-indigo-500/10 to-purple-500/20 rotate-10 scale-110"
-                      }`}
+                            ? "bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-pink-500/20 -rotate-12 scale-110"
+                            : currentImageIndex === 3
+                              ? "bg-gradient-to-br from-purple-500/20 via-green-500/10 to-blue-500/20 rotate-6 scale-95"
+                              : currentImageIndex === 4
+                                ? "bg-gradient-to-br from-blue-500/20 via-orange-500/10 to-pink-500/20 -rotate-10 scale-105"
+                                : "bg-gradient-to-br from-pink-500/20 via-indigo-500/10 to-purple-500/20 rotate-10 scale-110"
+                        }`}
                     ></div>
 
                     {/* Stack 3 - Additional layer */}
                     <div
-                      className={`absolute inset-0 rounded-3xl transform transition-all duration-1000 ease-out delay-400 ${
-                        currentImageIndex === 0
-                          ? "bg-gradient-to-br from-pink-500/15 via-blue-500/10 to-purple-500/15 rotate-12 scale-110"
-                          : currentImageIndex === 1
+                      className={`absolute inset-0 rounded-3xl transform transition-all duration-1000 ease-out delay-400 ${currentImageIndex === 0
+                        ? "bg-gradient-to-br from-pink-500/15 via-blue-500/10 to-purple-500/15 rotate-12 scale-110"
+                        : currentImageIndex === 1
                           ? "bg-gradient-to-br from-blue-500/15 via-purple-500/10 to-pink-500/15 -rotate-6 scale-95"
                           : currentImageIndex === 2
-                          ? "bg-gradient-to-br from-purple-500/15 via-pink-500/10 to-blue-500/15 rotate-8 scale-105"
-                          : currentImageIndex === 3
-                          ? "bg-gradient-to-br from-green-500/15 via-purple-500/10 to-blue-500/15 -rotate-8 scale-110"
-                          : currentImageIndex === 4
-                          ? "bg-gradient-to-br from-orange-500/15 via-blue-500/10 to-pink-500/15 rotate-10 scale-95"
-                          : "bg-gradient-to-br from-indigo-500/15 via-pink-500/10 to-purple-500/15 -rotate-10 scale-105"
-                      }`}
+                            ? "bg-gradient-to-br from-purple-500/15 via-pink-500/10 to-blue-500/15 rotate-8 scale-105"
+                            : currentImageIndex === 3
+                              ? "bg-gradient-to-br from-green-500/15 via-purple-500/10 to-blue-500/15 -rotate-8 scale-110"
+                              : currentImageIndex === 4
+                                ? "bg-gradient-to-br from-orange-500/15 via-blue-500/10 to-pink-500/15 rotate-10 scale-95"
+                                : "bg-gradient-to-br from-indigo-500/15 via-pink-500/10 to-purple-500/15 -rotate-10 scale-105"
+                        }`}
                     ></div>
                   </div>
 
@@ -408,19 +404,18 @@ const Home = () => {
                     {[...Array(8)].map((_, i) => (
                       <div
                         key={i}
-                        className={`absolute w-2 h-2 bg-white/20 rounded-full animate-pulse transition-all duration-1000 ${
-                          currentImageIndex === 0
-                            ? "animate-float-blue"
-                            : currentImageIndex === 1
+                        className={`absolute w-2 h-2 bg-white/20 rounded-full animate-pulse transition-all duration-1000 ${currentImageIndex === 0
+                          ? "animate-float-blue"
+                          : currentImageIndex === 1
                             ? "animate-float-purple"
                             : currentImageIndex === 2
-                            ? "animate-float-pink"
-                            : currentImageIndex === 3
-                            ? "animate-float-green"
-                            : currentImageIndex === 4
-                            ? "animate-float-orange"
-                            : "animate-float-indigo"
-                        }`}
+                              ? "animate-float-pink"
+                              : currentImageIndex === 3
+                                ? "animate-float-green"
+                                : currentImageIndex === 4
+                                  ? "animate-float-orange"
+                                  : "animate-float-indigo"
+                          }`}
                         style={{
                           left: `${20 + i * 10}%`,
                           top: `${15 + i * 8}%`,
@@ -434,34 +429,32 @@ const Home = () => {
                   {/* Glowing Orbs that change with image */}
                   <div className="absolute inset-0 overflow-hidden rounded-3xl">
                     <div
-                      className={`absolute w-32 h-32 rounded-full filter blur-2xl transition-all duration-1000 ease-out ${
-                        currentImageIndex === 0
-                          ? "bg-blue-500/40 top-1/4 -left-16 animate-pulse"
-                          : currentImageIndex === 1
+                      className={`absolute w-32 h-32 rounded-full filter blur-2xl transition-all duration-1000 ease-out ${currentImageIndex === 0
+                        ? "bg-blue-500/40 top-1/4 -left-16 animate-pulse"
+                        : currentImageIndex === 1
                           ? "bg-purple-500/40 top-1/3 -right-16 animate-pulse delay-300"
                           : currentImageIndex === 2
-                          ? "bg-pink-500/40 bottom-1/4 -left-16 animate-pulse delay-600"
-                          : currentImageIndex === 3
-                          ? "bg-green-500/40 top-1/2 -right-20 animate-pulse delay-900"
-                          : currentImageIndex === 4
-                          ? "bg-orange-500/40 bottom-1/3 -left-20 animate-pulse delay-1200"
-                          : "bg-indigo-500/40 top-1/4 -right-20 animate-pulse delay-1500"
-                      }`}
+                            ? "bg-pink-500/40 bottom-1/4 -left-16 animate-pulse delay-600"
+                            : currentImageIndex === 3
+                              ? "bg-green-500/40 top-1/2 -right-20 animate-pulse delay-900"
+                              : currentImageIndex === 4
+                                ? "bg-orange-500/40 bottom-1/3 -left-20 animate-pulse delay-1200"
+                                : "bg-indigo-500/40 top-1/4 -right-20 animate-pulse delay-1500"
+                        }`}
                     ></div>
                     <div
-                      className={`absolute w-24 h-24 rounded-full filter blur-xl transition-all duration-1000 ease-out delay-500 ${
-                        currentImageIndex === 0
-                          ? "bg-purple-500/30 bottom-1/4 -right-12 animate-pulse delay-500"
-                          : currentImageIndex === 1
+                      className={`absolute w-24 h-24 rounded-full filter blur-xl transition-all duration-1000 ease-out delay-500 ${currentImageIndex === 0
+                        ? "bg-purple-500/30 bottom-1/4 -right-12 animate-pulse delay-500"
+                        : currentImageIndex === 1
                           ? "bg-pink-500/30 top-1/4 -left-12 animate-pulse delay-800"
                           : currentImageIndex === 2
-                          ? "bg-blue-500/30 top-1/3 -right-12 animate-pulse delay-1100"
-                          : currentImageIndex === 3
-                          ? "bg-purple-500/30 bottom-1/3 -left-12 animate-pulse delay-1400"
-                          : currentImageIndex === 4
-                          ? "bg-green-500/30 top-1/2 -right-12 animate-pulse delay-1700"
-                          : "bg-orange-500/30 bottom-1/4 -left-12 animate-pulse delay-2000"
-                      }`}
+                            ? "bg-blue-500/30 top-1/3 -right-12 animate-pulse delay-1100"
+                            : currentImageIndex === 3
+                              ? "bg-purple-500/30 bottom-1/3 -left-12 animate-pulse delay-1400"
+                              : currentImageIndex === 4
+                                ? "bg-green-500/30 top-1/2 -right-12 animate-pulse delay-1700"
+                                : "bg-orange-500/30 bottom-1/4 -left-12 animate-pulse delay-2000"
+                        }`}
                     ></div>
                   </div>
 
@@ -510,11 +503,10 @@ const Home = () => {
                           <button
                             key={index}
                             onClick={() => setCurrentImageIndex(index)}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                              index === currentImageIndex
-                                ? "bg-white scale-125"
-                                : "bg-white/40 hover:bg-white/60"
-                            }`}
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImageIndex
+                              ? "bg-white scale-125"
+                              : "bg-white/40 hover:bg-white/60"
+                              }`}
                           />
                         ))}
                       </div>
@@ -652,15 +644,14 @@ const Home = () => {
                 {/* Web Development */}
                 <div className="relative">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-                    <div className="text-center md:text-right">
+                    <div className="flex flex-col justify-center items-center md:items-end text-center md:text-right h-full">
                       <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl sm:rounded-2xl mb-4 sm:mb-6">
                         <h3 className="text-2xl sm:text-3xl font-bold text-white">
                           Web Development
                         </h3>
                       </div>
-                      <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6">
-                        Crafting stunning, responsive websites that deliver
-                        measurable results.
+                      <p className="text-base sm:text-lg text-gray-300 text-justify mb-6 max-w-xl">
+                        We offer end-to-end web development services tailored to meet your business needs. From sleek marketing sites to fully custom web applications, our team builds responsive, high-performance websites that are fast, secure, and user-friendly. Whether you need a professional business website, an eCommerce store, or a content-driven CMS, we ensure every solution is built to scale and optimized for results. Our services include custom website development, corporate and portfolio sites, ecommerce platforms with smooth checkout flows, CMS integrations for easy content management, and conversion-focused landing pages.
                       </p>
                       <div className="flex flex-wrap justify-center md:justify-end gap-2 sm:gap-4">
                         <span className="px-3 sm:px-4 cursor-pointer py-1.5 sm:py-2 bg-blue-500/10 rounded-full text-blue-400 text-xs sm:text-sm">
@@ -718,9 +709,9 @@ const Home = () => {
                           App Development
                         </h3>
                       </div>
-                      <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6">
-                        Native and cross-platform mobile applications that
-                        provide exceptional user experiences.
+                      <p className="text-base sm:text-lg text-gray-300 text-justify mb-6 max-w-xl">
+                        We build robust, user-friendly mobile apps for both iOS and Android platforms—designed to deliver seamless experiences and high performance. Whether you're targeting a single platform or need a cross-platform solution, we offer full-cycle app development tailored to your goals. Using technologies like React Native and Flutter, we create apps that work beautifully across devices while saving time and development cost.
+                        From real-time features like chat, location tracking, and notifications to offline capabilities that ensure your app stays functional even without a connection, we focus on delivering apps that are smart, responsive, and built to scale. Whether it's a customer-facing product, an internal business tool, or an on-demand service app, we ensure your mobile solution is fast, secure, and ready for growth.
                       </p>
                       <div className="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-4">
                         <span className="px-3 sm:px-4 cursor-pointer py-1.5 sm:py-2 bg-purple-500/10 rounded-full text-purple-400 text-xs sm:text-sm">
@@ -755,10 +746,9 @@ const Home = () => {
                           AI Solutions
                         </h3>
                       </div>
-                      <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6">
-                        Cutting-edge AI services that power next-generation
-                        applications and Unlock the potential of artificial
-                        intelligence.
+                      <p className="text-base sm:text-lg text-gray-300 text-justify mb-6 max-w-xl">
+                        We offer cutting-edge AI services that power next-generation applications and unlock the true potential of artificial intelligence for your business. From automating repetitive tasks to building intelligent user interactions, our AI solutions are built to enhance efficiency, accuracy, and scalability across industries. Whether you're building an AI-powered product or looking to integrate smart features into existing systems, we bring the right blend of technology and expertise.
+                        Our services include Natural Language Processing (NLP) for chatbots, sentiment analysis, and language understanding, as well as Generative AI for content creation and personalization. We also specialize in data processing pipelines, computer vision for image and video analysis, and intelligent content moderation to ensure platform safety and compliance. Additionally, our document processing solutions help extract structured insights from unstructured data, enabling faster decision-making and automation.
                       </p>
                       <div className="flex flex-wrap justify-center md:justify-end gap-2 sm:gap-4">
                         <span className="px-3 sm:px-4 cursor-pointer py-1.5 sm:py-2 bg-blue-500/10 rounded-full text-blue-400 text-xs sm:text-sm">
