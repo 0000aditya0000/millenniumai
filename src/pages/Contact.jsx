@@ -1,391 +1,191 @@
-import React, { useState } from "react";
-import { HiPhone, HiMail, HiLocationMarker } from "react-icons/hi";
-import { FaWhatsapp } from "react-icons/fa";
-import emailjs from "@emailjs/browser";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { Button } from '@/components/ui/button';
+import { Mail, Phone, MapPin, Send, Linkedin, Instagram, Twitter, Facebook, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
-  const [form, setForm] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    contactno: "",
-    message: "",
-  });
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_first_name: form.first_name,
-          from_last_name: form.last_name,
-          from_contactno: form.contactno,
-          to_name: "Pratham Gupta",
-          from_email: form.email,
-          to_email: "guptapratham661@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. We will get back to you as soon as possible.");
-          setForm({
-            first_name: "",
-            last_name: "",
-            email: "",
-            contactno: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
-  };
-
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 lg:pt-32">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-[#0A0A0A]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-purple-500/10 to-transparent"></div>
+    <>
+      <Helmet>
+        <title>Contact Sales | MillenniumAI</title>
+        <meta name="description" content="Contact MillenniumAI for enterprise-grade data annotation. Reach our sales team or visit our corporate headquarters in Ghaziabad, India." />
+      </Helmet>
+      <div className="min-h-screen pt-28 pb-20 bg-gradient-to-b from-gray-50 to-white px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">Let&apos;s Build the Future of AI</h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Ready to scale your models? Connect with our solution architects for a custom consultation.
+            </p>
+          </motion.div>
 
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:3rem_3rem] lg:bg-[size:4rem_4rem]"></div>
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* LEFT COLUMN: Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-7 bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100"
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-gray-700">Full Name *</label>
+                    <input
+                      type="text"
+                      className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      placeholder="John Doe"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-gray-700">Work Email *</label>
+                    <input
+                      type="email"
+                      className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      placeholder="john@company.com"
+                      required
+                    />
+                  </div>
+                </div>
 
-        {/* Glowing Orbs */}
-        <div className="absolute top-1/4 -left-10 sm:-left-20 w-48 h-48 sm:w-72 sm:h-72 bg-blue-500/30 rounded-full filter blur-[60px] sm:blur-[100px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 -right-10 sm:-right-20 w-48 h-48 sm:w-72 sm:h-72 bg-purple-500/30 rounded-full filter blur-[60px] sm:blur-[100px] animate-pulse delay-1000"></div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-gray-700">Phone Number *</label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-3 text-gray-500 font-medium border-r border-gray-300 pr-2">+91</span>
+                      <input
+                        type="tel"
+                        className="w-full p-3 pl-14 bg-gray-50 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                        placeholder="98765 43210"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-gray-700">Company Name</label>
+                    <input
+                      type="text"
+                      className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      placeholder="Acme Inc."
+                    />
+                  </div>
+                </div>
 
-        <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-6 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            {/* Section Header */}
-            <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-              <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-white/5 backdrop-blur-sm rounded-full mb-6 sm:mb-8 border border-white/10">
-                <span className="text-white/80 text-xs sm:text-sm font-medium">
-                  Get In Touch
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-white leading-tight">
-                Let's Build Something{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  Amazing
-                </span>
-              </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
-                Ready to transform your ideas into reality? Reach out to us and
-                let's create something extraordinary together.
-              </p>
-            </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-gray-700">Subject *</label>
+                  <select className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all cursor-pointer">
+                    <option value="" disabled selected>Select a topic...</option>
+                    <option value="sales">Enterprise Sales Inquiry</option>
+                    <option value="partnership">Partnership Opportunity</option>
+                    <option value="support">Technical Support</option>
+                    <option value="careers">Careers / HR</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-8 sm:mb-10 items-start">
-              {/* Contact Information */}
-              <div className="space-y-6 sm:space-y-8">
-                <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl sm:rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-white">
-                      Contact Information
-                    </h3>
-                    <div className="space-y-6 sm:space-y-8">
-                      <a
-                        href="tel:+919319410265"
-                        className="flex items-center gap-4 sm:gap-6 text-gray-300 hover:text-blue-400 transition-all duration-300 group"
-                      >
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                          <HiPhone className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
-                        </div>
-                        <div>
-                          <p className="text-xs sm:text-sm text-gray-400 mb-1">Phone</p>
-                          <p className="text-lg sm:text-xl font-medium text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
-                            +91 837 798 8481
-                          </p>
-                        </div>
-                      </a>
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-gray-700">Message *</label>
+                  <textarea
+                    className="w-full p-3 bg-gray-50 rounded-lg border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none h-40 resize-none transition-all"
+                    placeholder="Tell us about your project requirements, data volume, and timeline..."
+                    required
+                  ></textarea>
+                </div>
 
-                      <a
-                        href="mailto:info@millenniumai.in"
-                        className="flex items-center gap-4 sm:gap-6 text-gray-300 hover:text-purple-400 transition-all duration-300 group"
-                      >
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                          <HiMail className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400" />
-                        </div>
-                        <div>
-                          <p className="text-xs sm:text-sm text-gray-400 mb-1">Email</p>
-                          <p className="text-lg sm:text-xl font-medium text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
-                            info@millenniumai.in
-                          </p>
-                          <p className="text-lg sm:text-xl font-medium text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
-                            Sales@millenniumai.in
-                          </p>
-                        </div>
-                      </a>
+                <Button className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg shadow-blue-500/25">
+                  <Send className="w-4 h-4 mr-2" />
+                  Send Message
+                </Button>
 
-                      <div className="flex items-center gap-4 sm:gap-6 text-gray-300 group">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500/20 to-pink-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                          <HiLocationMarker className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
-                        </div>
-                        <div>
-                          <p className="text-xs sm:text-sm text-gray-400 mb-1">Address</p>
-                          <p className="text-lg sm:text-xl font-medium text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-pink-400 transition-all duration-300">
-                            UGF-02 Krishna Enclave Govindpuram,
-                          </p>
-                          <p className="text-lg sm:text-xl font-medium text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-pink-400 transition-all duration-300">
-                            Ghaziabad, UP 201002
-                          </p>
-                        </div>
+                <p className="text-xs text-center text-gray-500 pt-2">
+                  Your data is secure. By submitting, you agree to our Privacy Policy.
+                </p>
+              </form>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Contact Details */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="lg:col-span-5 space-y-8"
+            >
+              {/* Info Card */}
+              <div className="bg-gradient-to-br from-gray-900 to-blue-900 text-white p-8 rounded-2xl shadow-xl overflow-hidden relative">
+                <div className="absolute top-0 right-0 p-32 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-2 relative z-10">
+                  <MapPin className="w-5 h-5 text-blue-400" />
+                  Corporate Headquarters
+                </h3>
+                <address className="not-italic text-gray-300 leading-relaxed mb-8 border-l-2 border-blue-500/50 pl-4 relative z-10">
+                  UGF 02 Krishna Enclave<br/>
+                  Govindpuram, Ghaziabad<br/>
+                  Uttar Pradesh 201002<br/>
+                  India
+                </address>
+                <div className="space-y-6 relative z-10">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-white/10 rounded-lg shrink-0">
+                      <Mail className="w-5 h-5 text-blue-300" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold mb-1">General & Partnerships</p>
+                      <a href="mailto:Info@millenniumai.in" className="text-lg font-medium hover:text-blue-300 transition-colors">Info@millenniumai.in</a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-white/10 rounded-lg shrink-0">
+                      <Mail className="w-5 h-5 text-purple-300" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold mb-1">Sales Inquiries</p>
+                      <a href="mailto:Sales@millenniumai.com" className="text-lg font-medium hover:text-purple-300 transition-colors">Sales@millenniumai.com</a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-white/10 rounded-lg shrink-0">
+                      <Phone className="w-5 h-5 text-green-300" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold mb-1">Phone Support</p>
+                      <div className="flex flex-col gap-1">
+                        <a href="tel:+917053171752" className="text-lg font-medium hover:text-green-300 transition-colors">+91 7053 171 752</a>
+                        <a href="tel:+917291874970" className="text-lg font-medium hover:text-green-300 transition-colors">+91 7291 874 970</a>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Social Media Links */}
-                <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl sm:rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10">
-                    <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-white">
-                      Connect With Us
-                    </h3>
-                    <div className="flex gap-3 sm:gap-4">
-                      <a
-                        href="#"
-                        className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300"
-                      >
-                        <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300"
-                      >
-                        <svg
-                          className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                        </svg>
-                      </a>
-                      <a
-                        href="#"
-                        className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500/20 to-pink-500/20 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300"
-                      >
-                        <svg
-                          className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
+                {/* Social Links */}
+                <div className="mt-10 pt-8 border-t border-white/10 flex gap-4 relative z-10">
+                  <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/20 transition-colors"><Linkedin className="w-5 h-5" /></a>
+                  <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/20 transition-colors"><Twitter className="w-5 h-5" /></a>
+                  <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/20 transition-colors"><Instagram className="w-5 h-5" /></a>
+                  <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/20 transition-colors"><Facebook className="w-5 h-5" /></a>
                 </div>
               </div>
 
-              {/* Contact Form - New Design */}
-              <div className="relative">
-                {/* Decorative Elements */}
-                <div className="absolute -top-10 -left-10 w-20 h-20 sm:w-40 sm:h-40 bg-blue-500/20 rounded-full filter blur-2xl sm:blur-3xl"></div>
-                <div className="absolute -bottom-10 -right-10 w-20 h-20 sm:w-40 sm:h-40 bg-purple-500/20 rounded-full filter blur-2xl sm:blur-3xl"></div>
-
-                <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/10 overflow-hidden">
-                  {/* Form Header */}
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start mb-4 sm:mb-5">
-                    <div className="w-12 h-12 sm:w-15 sm:h-15 mx-4 sm:mx-8 mb-2 sm:mb-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center transform hover:scale-110 transition-all duration-300">
-                      <svg
-                        className="w-6 h-6 sm:w-10 sm:h-10 text-blue-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex flex-col text-center sm:text-left">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">
-                        Send us a Message
-                      </h3>
-                      <p className="text-gray-400 text-sm sm:text-base">
-                        We'll get back to you within 24 hours
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Form Content */}
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                      <div className="group">
-                        <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
-                          First Name
-                        </label>
-                        <div className="relative">
-                          <input
-                            type="text"
-                            name="first_name"
-                            value={form.first_name}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 sm:px-6 py-2 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base sm:text-lg text-white placeholder-gray-400 transition-all duration-300"
-                            placeholder="John"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                        </div>
-                      </div>
-                      <div className="group">
-                        <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
-                          Last Name
-                        </label>
-                        <div className="relative">
-                          <input
-                            type="text"
-                            name="last_name"
-                            value={form.last_name}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 sm:px-6 py-2 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-base sm:text-lg text-white placeholder-gray-400 transition-all duration-300"
-                            placeholder="Doe"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="group">
-                      <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
-                        Email Address
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="email"
-                          name="email"
-                          value={form.email}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 sm:px-6 py-2 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base sm:text-lg text-white placeholder-gray-400 transition-all duration-300"
-                          placeholder="john@example.com"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                      </div>
-                    </div>
-
-                    <div className="group">
-                      <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
-                        Phone Number
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="tel"
-                          name="contactno"
-                          value={form.contactno}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 sm:px-6 py-2 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-base sm:text-lg text-white placeholder-gray-400 transition-all duration-300"
-                          placeholder="+91 123 456 7890"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                      </div>
-                    </div>
-
-                    <div className="group">
-                      <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
-                        Your Message
-                      </label>
-                      <div className="relative">
-                        <textarea
-                          name="message"
-                          value={form.message}
-                          onChange={handleChange}
-                          required
-                          rows="3"
-                          className="w-full px-4 sm:px-6 py-2 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-base sm:text-lg text-white placeholder-gray-400 transition-all duration-300"
-                          placeholder="Tell us about your project..."
-                        ></textarea>
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                      </div>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full px-4 sm:px-5 py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden group"
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        {loading ? (
-                          <>
-                            <svg
-                              className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
-                              <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                              ></circle>
-                              <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                              ></path>
-                            </svg>
-                            Sending...
-                          </>
-                        ) : (
-                          <>
-                            Send Message
-                            <svg
-                              className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M14 5l7 7m0 0l-7 7m7-7H3"
-                              />
-                            </svg>
-                          </>
-                        )}
-                      </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </button>
-                  </form>
+              {/* Support Hours */}
+              <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex items-center gap-4">
+                <div className="p-3 bg-orange-100 rounded-full text-orange-600">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900">Support Hours</h4>
+                  <p className="text-sm text-gray-600">Mon - Fri: 9:00 AM - 7:00 PM IST</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </>
   );
 };
 
